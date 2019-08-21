@@ -1,8 +1,8 @@
 /////// FAKE API ///////
 
 const users = [
-  { name: 'Def', email: 'def@def.com' },
-  { name: 'Casey', email: 'casey@casey.com' }
+  { name: 'John Stevens', email: 'john.stevens@domain.com' },
+  { name: 'Mark Majors', email: 'mark.majors@domain.com' }
 ];
 
 export const service = {
