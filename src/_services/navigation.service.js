@@ -51,6 +51,28 @@ const apiData = [
       }
     ],
   },
+  {
+    uid: "UNIQUE-ID-8899112233",
+    label: "Settings",
+    path: "/settings",
+    hasChild: "true",
+    children: [
+      {
+        uid: "UNIQUE-ID-9911223344",
+        label: "Update Configuration",
+        path: "/settings/update-configuration",
+        hasChild: "false",
+        children: [],
+      },
+      {
+        uid: "UNIQUE-ID-12131415",
+        label: "Units and Measurements",
+        path: "/settings/units-and-measurements",
+        hasChild: "false",
+        children: [],
+      }
+    ]
+  }
 
 
 ];
