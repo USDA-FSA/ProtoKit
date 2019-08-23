@@ -13,6 +13,11 @@
             </li>
           </ul>
         </div>
+        <div class="fsa-section__bd">
+          <div>
+            <card NAME="Associates:" :CARDDATA="cardData"></card>
+          </div>
+        </div>
       </div>
     </main>
     <baseFooter></baseFooter>
@@ -22,6 +27,7 @@
 <script>
 import baseHeader from '../partials/baseHeader';
 import baseFooter from '../partials/baseFooter';
+import card from '../components/card/card';
 
 import { mapState } from 'vuex';
 
@@ -29,7 +35,23 @@ export default {
 
   components: {
     baseHeader: baseHeader,
-    baseFooter: baseFooter
+    baseFooter: baseFooter,
+    card: card,
+  },
+
+ data(){
+    return {
+      cardData: [
+        {
+          label: "Employer",
+          desc: "USDA"
+        },
+        { 
+          label: "Position",
+          desc: "Accountant"
+        }
+      ]
+    }
   },
 
   computed: {

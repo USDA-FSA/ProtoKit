@@ -5,7 +5,7 @@ import Router from 'vue-router';
 
 import Home from '../views/Home';
 import Boilerplate from '../views/Boilerplate';
-import CropReport from '../views/Reports/CropReport';
+import ReportsOverview from '../views/Reports/Overview';
 
 
 Vue.use( Router );
@@ -24,9 +24,9 @@ export default new Router({
       component: Boilerplate
     },
 
-    { path: '/reports/crop-report',
-      name: 'crop-report',
-      component: CropReport
+    { path: '/reports/overview',
+      name: 'reports-overview',
+      component: ReportsOverview
     },
 
     // otherwise redirect to home

@@ -11,18 +11,21 @@
      >
      </tophat>
     <headerApp
-      APP_ABBR_NAME="UXPK"
-      APP_FULL_NAME="User Experience Prototype Kit"
+      APP_ABBR_NAME="UXP"
+      APP_FULL_NAME="User Experience ProtoKit"
       PROFILE_NAME="Michael Scott (Log off)"
       LOGOFF_URL="https://www.eauth.usda.gov/Logout/logoff.asp"
     >
     </headerApp>
-    <globalNav :NAV_DATA="navigationData"></globalNav>
+    <globalNav :NAV_DATA="navigationData" CLASS_EXTRA="fsa-nav-global__list-item--multi-column"></globalNav>
+    
 
   </header>
 </template>
 
 <script>
+
+//
 
 import tophat from '../components/tophat/tophat';
 import headerApp from '../components/header-app/header-app';
@@ -35,7 +38,7 @@ export default {
   components: {
     tophat: tophat,
     headerApp: headerApp,
-    globalNav: globalNav
+    globalNav: globalNav,
   },
 
   computed: {

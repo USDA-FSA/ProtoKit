@@ -8,9 +8,6 @@
       <div class="fsa-section">
         <div class="fsa-section__bd">
         <h1>Who Are You?</h1>
-        <!--<div>
-          <card NAME="This is cool" :CARDDATA="cardData"></card>
-        </div>-->
         <div>
           <form @submit.prevent="handleSubmit">
 

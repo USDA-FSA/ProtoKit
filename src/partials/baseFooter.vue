@@ -2,7 +2,7 @@
   <footer>
     <footerTopper></footerTopper>
     <footerFooter 
-      APP_ABBR_NAME="UXPK">
+      APP_ABBR_NAME="UXP">
     </footerFooter>
     <footerScreenId
       SCREEN_ID="UXP-123-XYZ">
