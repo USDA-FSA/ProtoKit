@@ -114,11 +114,28 @@ export default {
     },
 
     addFocusListeners: function(item){
+      console.log(item);
       item.addEventListener('focus', this.closeMenu(item) );
     },
 
     removeFocusListeners: function(item){
       item.removeEventListener('focus', this.closeMenu(item) );
+    },
+
+    addUnfocusListener: function(item){
+      console.log('addUnfocusListener('+item+')');
+      document.addEventListener('click', function(event){
+        console.log(event.target);
+        var isClickInside = item.contains(event.target);
+        if(!isClickInside){
+          this.loopItems('closeAllMenus');
+        }
+      });
+    },
+
+    listenForClickAway: function(){
+      console.log('listenForClickAway()');
+      this.loopItems('addUnfocusListener');
     },
 
     listenForKeys: function(e){ if(e.keyCode == 27) this.loopItems('closeAllMenus') },
@@ -127,12 +144,14 @@ export default {
     // Utility Method to cycle thru ALL of top level nav items
     //
     loopItems: function( action, callback=null ){
+      console.log("loopItems() > "+ action);
       let menuItems = document.getElementsByClassName('fsa-nav-global__link--has-sub-menu');
       for (let i = 0; i < menuItems.length; i++) {
         let item = menuItems[i];
         if(action=='addFocusListeners') this.addFocusListeners(item);
-        else if(action='removeFocusListeners') this.removeFocusListeners(item);
+        else if(action=='removeFocusListeners') this.removeFocusListeners(item);
         else if(action=='closeAllMenus') this.closeMenu(item);
+        else if(action=='addUnfocusListener') this.addUnfocusListener(item);
       }
     },
 
@@ -140,7 +159,11 @@ export default {
 
   created(){
     window.addEventListener('keydown', this.listenForKeys);
+  },
+
+  mounted(){
     this.loopItems('addFocusListeners');
+    this.listenForClickAway();
   },
 
   beforeDestroy(){
