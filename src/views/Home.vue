@@ -69,6 +69,15 @@
           </form>
           
         </div>
+      </div>
+    </div>
+    <div class="fsa-section">
+      <div class="fsa-section__bd">
+        <button class="fsa-btn fsa-btn--secondary">Open Modal</button>
+      </div>
+    </div>
+    <div class="fsa-section">
+      <div class="fsa-section__bd">
         <div>
             <button class="fsa-btn fsa-btn--secondary" v-on:click="killExt">Kill Extention</button>
 
