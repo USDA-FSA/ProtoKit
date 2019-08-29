@@ -1,34 +1,174 @@
 <template>
-  <div>
-    <div tabindex="0" id="modal__inspection-06" class="fsa-modal fsa-modal--top" role="dialog" aria-hidden="true">
-      <div class="fsa-modal__dialog">
-        <div class="fsa-modal__content">
-          <button class="fsa-modal__close" data-behavior="close-modal" aria-controls="UNIQUE-ID-employee-unsaved"><img class="fsa-modal__close-icon" src="img/close.svg" alt="close"></button>
-          <form>
-            <h1 class="fsa-modal__title">{{ MODAL_TITLE }}</h1>
-            <fieldset>
-              <div class="fsa-field">
-                <label class="fsa-field__label" for="thingthing-name_887sh">First Name <span class="fsa-field__label-desc">Required</span></label>
-                <input data-behavior="validate-empty-field track-change" class="fsa-input fsa-field__item" id="thingthing-name_887sh" name="thingthing-name_887sh" type="text" value="Stringer">
-                <span class="fsa-field__message" id="thingthing-name__error_887sh-message-01" role="alert">This field is required</span>
-              </div>
-              <div class="fsa-field fsa-m-t--l">
-                <button class="fsa-btn fsa-btn--primary" type="button" data-behavior="close-modal whiteout-dismiss growl-show growl-dismiss-delay" aria-controls="UNIQUE-ID-458s5g8w5">Save</button>
-                <button class="fsa-btn fsa-btn--flat" data-behavior="close-modal" type="button">Cancel</button>
-              </div>
-            </fieldset>
-          </form>
-        </div>
+  <div tabindex="0" :id="MODAL_ID" class="fsa-modal fsa-modal--top" role="dialog" aria-hidden="true">
+    <div class="fsa-modal__dialog">
+      <div class="fsa-modal__content">
+        <button class="fsa-modal__close" data-behavior="close-modal" :aria-controls="MODAL_ID"><img class="fsa-modal__close-icon" src="img/close.svg" alt="close"></button>
+        <form>
+          <h1 class="fsa-modal__title">{{ MODAL_TITLE }}</h1>
+          <slot name="modalBody"></slot>
+        </form>
       </div>
-    </div>  
-  </div>
+    </div>
+  </div>  
 </template>
 
 <script>
 export default {
   props: {
+    MODAL_ID: String,
     MODAL_TITLE: String,
 
-  }
+  },
+
+  data: function(){
+    return {
+      modalFirstTabStop: {},
+      modalLastTabStop: {}
+    }
+  },
+
+  computed: {
+
+  },
+
+  methods: {
+
+
+    trapModal: function(e){
+      // Check for TAB key press
+      if (e.keyCode === 9) {
+        // SHIFT + TAB
+        if (e.shiftKey) {
+          if (document.activeElement === this.modalFirstTabStop) {
+            e.preventDefault();
+            modal__lastTabStop.focus();
+          }
+        // TAB
+        } else {
+          if (document.activeElement === modal__lastTabStop) {
+            e.preventDefault();
+            this.modalFirstTabStop.focus();
+          }
+        }
+      }
+      // ESCAPE
+      if (e.keyCode === 27) {
+        closeModal();
+      }
+    },
+
+    showModal: function( m ){
+
+      let modal = m;
+      // show the modal by toggling aria attribute
+      modal.setAttribute('aria-hidden', 'false');
+
+      // trap tabs inside of modal
+      modal.addEventListener('keydown', this.trapModal);
+      // Find all focusable children
+
+      let focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
+      let focusableElements = modal.querySelectorAll(focusableElementsString);
+
+      // Convert NodeList to Array
+      focusableElements = Array.prototype.slice.call(focusableElements);
+
+      this.modalFirstTabStop = focusableElements[0];
+      modal__lastTabStop = focusableElements[focusableElements.length - 1];
+      this.modalFirstTabStop.focus();
+
+      // Fix double scrollbar issue
+      let body = document.getElementsByTagName('body')[0];
+      body.className = body.className + ' fsa-modal-scroll-fix';
+
+      // gain focus --- needs rewrite
+      setTimeout(function() {
+        modal.focus();
+      },200);
+
+    },
+
+    hideModal: function( m ){
+      
+      console.log(m);
+      let modal = m;
+      // hide the modal by toggling aria attribute
+      modal.setAttribute('aria-hidden', 'true');
+
+      // Fix double scrollbar issue
+      var body = document.getElementsByTagName('body')[0];
+      body.className = body.className.replace(' fsa-modal-scroll-fix','');
+
+      // set focus back to the originating element
+      var origin = document.querySelector('[data-modal-origin]');
+      origin.removeAttribute('data-modal-origin');
+      origin.setAttribute('aria-expanded', 'false');
+      origin.focus();
+    },
+
+
+    /// UTILITY METHOD
+    loopItems: function( identifier ){
+
+      let items = document.querySelectorAll( identifier );
+
+      for (let i = 0; i < items.length; i++) {
+        let item = items[i];
+        item.ref = this;
+        item.addEventListener('click', function(e){
+          let trigger = e.target;
+          let id = trigger.getAttribute('aria-controls');
+          
+          if( identifier == '[data-behavior~="open-modal"]'){
+            
+            trigger.setAttribute('aria-expanded', 'true');
+            trigger.setAttribute('data-modal-origin','');
+            
+            trigger.ref.showModal( document.getElementById( id ) );
+          
+          } else if(identifier == '[data-behavior~="close-modal"]'){
+
+            trigger.ref.hideModal( trigger.ref.getClosest(e.currentTarget, '.fsa-modal') );
+
+          }
+          
+        });  
+      }
+    },
+
+    getClosest: function(elem, selector){
+
+      // Element.matches() polyfill
+      if (!Element.prototype.matches) {
+        Element.prototype.matches =
+        Element.prototype.matchesSelector ||
+        Element.prototype.mozMatchesSelector ||
+        Element.prototype.msMatchesSelector ||
+        Element.prototype.oMatchesSelector ||
+        Element.prototype.webkitMatchesSelector ||
+        function(s) {
+          var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+          i = matches.length;
+          while (--i >= 0 && matches.item(i) !== this) {}
+            return i > -1;
+        };
+      }
+
+      // Get the closest matching element
+      for ( ; elem && elem !== document; elem = elem.parentNode ) {
+        if ( elem.matches( selector ) ) return elem;
+      }
+
+      return null;
+    },
+
+  },
+
+  mounted(){
+    this.loopItems('[data-behavior~="close-modal"]');
+    this.loopItems('[data-behavior~="open-modal"]');
+  },
+
+
 }
 </script>

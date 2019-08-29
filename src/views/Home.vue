@@ -70,6 +70,7 @@
           
         </div>
         <div>
+            <button class="fsa-btn fsa-btn--secondary" data-behavior="open-modal" aria-controls="MODAL-UNIQUE-ID_01">Show Modal</button>
             <button class="fsa-btn fsa-btn--secondary" v-on:click="killExt">Kill Extention</button>
 
             <table class="fsa-table fsa-table--borderless fsa-table--responsive fsa-table--responsive-horizontal fic-inspections fic-inspections--status-filter-is-all" id="inspectionsTable">
@@ -94,7 +95,21 @@
         </div>
       </div>
     </main>
-    
+    <modal MODAL_ID="MODAL-UNIQUE-ID_01" MODAL_TITLE="Who Clicked Me?">
+      <template v-slot:modalBody>
+        <fieldset>
+          <div class="fsa-field">
+            <label class="fsa-field__label" for="thingthing-name_887sh">First Name <span class="fsa-field__label-desc">Required</span></label>
+            <input data-behavior="validate-empty-field track-change" class="fsa-input fsa-field__item" id="thingthing-name_887sh" name="thingthing-name_887sh" type="text" value="Stringer">
+            <span class="fsa-field__message" id="thingthing-name__error_887sh-message-01" role="alert">This field is required</span>
+          </div>
+          <div class="fsa-field fsa-m-t--l">
+            <button class="fsa-btn fsa-btn--primary" type="button" data-behavior="close-modal whiteout-dismiss" aria-controls="UNIQUE-ID-458s5g8w5">Save</button>
+            <button class="fsa-btn fsa-btn--flat" data-behavior="close-modal" type="button">Cancel</button>
+          </div>
+        </fieldset>
+      </template>
+    </modal>
     <baseFooter></baseFooter>
   </div>
 </template>
@@ -107,6 +122,7 @@ import baseFooter from '../partials/baseFooter';
 // COMPONENTS
 import field from '../components/field/field';
 import card from '../components/card/card';
+import modal from '../components/modal/modal';
 import whiteout from '../components/whiteout/whiteout';
 
 import { mapState, mapGetters, mapActions } from 'vuex';
@@ -118,6 +134,7 @@ export default {
     baseFooter: baseFooter,
     card: card,
     field: field,
+    modal: modal,
     whiteout: whiteout,
   },
 
@@ -154,24 +171,14 @@ export default {
       killExt: 'killExtention',
       submitForm: 'addNewUser'
     }),
+    
     handleSubmit(e){
       let user = {name: e.target.name.value, email: e.target.email.value};
       e.target.name.value = "";
       e.target.email.value = "";
       this.submitForm( user );
-    }
-
-    /*
-    killExt: function(){
-      this.$store.dispatch('users/killExtention');
-      //.commit('killExtention');
     },
 
-    handleSubmit: function(e){
-      let user = {name: e.target.name.value, email: e.target.email.value};
-      this.$store.dispatch('users/addNewUser', user );
-    }
-    */
   },
 
   created(){
