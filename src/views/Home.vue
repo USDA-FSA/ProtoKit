@@ -71,11 +71,7 @@
         </div>
       </div>
     </div>
-    <div class="fsa-section">
-      <div class="fsa-section__bd">
-        <button class="fsa-btn fsa-btn--secondary">Open Modal</button>
-      </div>
-    </div>
+
     <div class="fsa-section">
       <div class="fsa-section__bd">
         <div>
