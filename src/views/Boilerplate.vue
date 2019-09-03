@@ -8,7 +8,17 @@
           <h1>Boil the Ocean</h1>
           <ul v-for="user in users">
             <li>
-              <p>{{ user.name }}</p>
+              <p>{{ user.name }} 
+                
+                <fsaLabel
+                  TEXT="GREAT"
+                  VARIATION="fsa-label--success"
+                  LARGE="fsa-label--large"
+                  CLASS_EXTRA=""
+                  ATTR_TITLE="Great Person"
+                ></fsaLabel>
+
+              </p>
               <p>{{ user.email }}</p>
             </li>
           </ul>
@@ -28,6 +38,7 @@
 import baseHeader from '../partials/baseHeader';
 import baseFooter from '../partials/baseFooter';
 import card from '../components/card/card';
+import label from '../components/label/label';
 
 import { mapState } from 'vuex';
 
@@ -37,6 +48,7 @@ export default {
     baseHeader: baseHeader,
     baseFooter: baseFooter,
     card: card,
+    fsaLabel: label,
   },
 
  data(){
