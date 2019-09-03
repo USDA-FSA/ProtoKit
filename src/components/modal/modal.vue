@@ -41,11 +41,11 @@ export default {
         if (e.shiftKey) {
           if (document.activeElement === this.modalFirstTabStop) {
             e.preventDefault();
-            modal__lastTabStop.focus();
-          }
+            this.modalLastTabStop.focus();
+          }modalLastTabStop
         // TAB
         } else {
-          if (document.activeElement === modal__lastTabStop) {
+          if (document.activeElement === this.modalLastTabStop) {
             e.preventDefault();
             this.modalFirstTabStop.focus();
           }
@@ -74,7 +74,7 @@ export default {
       focusableElements = Array.prototype.slice.call(focusableElements);
 
       this.modalFirstTabStop = focusableElements[0];
-      modal__lastTabStop = focusableElements[focusableElements.length - 1];
+      this.modalLastTabStop = focusableElements[focusableElements.length - 1];
       this.modalFirstTabStop.focus();
 
       // Fix double scrollbar issue
@@ -88,22 +88,25 @@ export default {
 
     },
 
-    hideModal: function( m ){
+    hideModal: function( m, t ){
       
-      console.log(m);
       let modal = m;
       // hide the modal by toggling aria attribute
       modal.setAttribute('aria-hidden', 'true');
 
       // Fix double scrollbar issue
-      var body = document.getElementsByTagName('body')[0];
+      let body = document.getElementsByTagName('body')[0];
       body.className = body.className.replace(' fsa-modal-scroll-fix','');
 
       // set focus back to the originating element
-      var origin = document.querySelector('[data-modal-origin]');
-      origin.removeAttribute('data-modal-origin');
-      origin.setAttribute('aria-expanded', 'false');
-      origin.focus();
+      let origin = document.querySelector('[data-modal-origin]');
+      
+      if( origin ){
+        origin.removeAttribute('data-modal-origin');
+        origin.setAttribute('aria-expanded', 'false');
+        origin.focus();
+      }
+      
     },
 
 

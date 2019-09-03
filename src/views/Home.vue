@@ -95,6 +95,7 @@
         </div>
       </div>
     </main>
+    
     <modal MODAL_ID="MODAL-UNIQUE-ID_01" MODAL_TITLE="Who Clicked Me?">
       <template v-slot:modalBody>
         <fieldset>
@@ -110,6 +111,7 @@
         </fieldset>
       </template>
     </modal>
+
     <baseFooter></baseFooter>
   </div>
 </template>
