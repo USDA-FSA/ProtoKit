@@ -75,7 +75,7 @@
     <div class="fsa-section">
       <div class="fsa-section__bd">
         <div>
-            <button class="fsa-btn fsa-btn--secondary" data-behavior="open-modal" aria-controls="MODAL-UNIQUE-ID_01">Show Modal</button>
+            <button class="fsa-btn fsa-btn--secondary" data-behavior="open-modal" aria-controls="MODAL-UNIQUE-ID_01">Open Modal</button>
             <button class="fsa-btn fsa-btn--secondary" v-on:click="killExt">Kill Extention</button>
 
             <table class="fsa-table fsa-table--borderless fsa-table--responsive fsa-table--responsive-horizontal fic-inspections fic-inspections--status-filter-is-all" id="inspectionsTable">
