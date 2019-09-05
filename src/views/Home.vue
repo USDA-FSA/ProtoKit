@@ -76,6 +76,7 @@
       <div class="fsa-section__bd">
         <div>
             <button class="fsa-btn fsa-btn--secondary" data-behavior="open-modal" aria-controls="MODAL-UNIQUE-ID_01">Open Modal</button>
+            <button class="fsa-btn fsa-btn--secondary" data-behavior="growl-show" aria-controls="GROWL-UNIQUE-ID_01">Open Growl</button>
             <button class="fsa-btn fsa-btn--secondary" v-on:click="killExt">Kill Extention</button>
 
             <table class="fsa-table fsa-table--borderless fsa-table--responsive fsa-table--responsive-horizontal fic-inspections fic-inspections--status-filter-is-all" id="inspectionsTable">
@@ -116,6 +117,23 @@
         </fieldset>
       </template>
     </modal>
+  
+    <growl GROWL_ID="GROWL-UNIQUE-ID_01"
+      VARIATION="fsa-growl--error"
+      CONTAINER_CENTERED="fsa-growl-container--centered"
+      CENTERED="fsa-growl--centered"
+      WHITEOUT_DISMISS="whiteout-dismiss"
+      GROWL_TITLE="Houston, we have a problem."
+    >
+      <template v-slot:growlBody>
+        <p>Message goes here if you like or something, <a href="link.html">with a link</a> if necessary.</p>
+        <p>And another line here for kicks.</p>
+        <p>
+          <button data-behavior="growl-dismiss whiteout-dismiss" class="fsa-btn fsa-btn--small fsa-btn--secondary" type="button">Button</button>
+          <a class="fsa-btn fsa-btn--small fsa-btn--secondary" href="link.html">Button link</a>
+        </p>
+      </template>
+    </growl>
 
     <baseFooter></baseFooter>
   </div>
@@ -130,9 +148,11 @@ import baseFooter from '../partials/baseFooter';
 import field from '../components/field/field';
 import card from '../components/card/card';
 import modal from '../components/modal/modal';
+import growl from '../components/growl/growl';
 import whiteout from '../components/whiteout/whiteout';
 
 import { mapState, mapGetters, mapActions } from 'vuex';
+import growlVue from '../components/growl/growl.vue';
 
 export default {
 
@@ -142,6 +162,7 @@ export default {
     card: card,
     field: field,
     modal: modal,
+    growl: growl,
     whiteout: whiteout,
   },
 
