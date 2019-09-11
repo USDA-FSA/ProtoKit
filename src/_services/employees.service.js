@@ -29,7 +29,7 @@ const apiData = {
     {
       uid: "UID-04",
       thLabel: "Actions",
-      thClass: "fsa-table__th--sticky",
+      thClass: "fsa-table__th--sticky fsa-text-align--right",
       useSort: "false",
       thSort: "",
       thSortType: ""
@@ -71,7 +71,7 @@ const apiData = {
         },
         {
           uid: "UID-09",
-          tdClass: "",
+          tdClass: "fsa-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
@@ -117,7 +117,7 @@ const apiData = {
         },
         {
           uid: "UID-14",
-          tdClass: "",
+          tdClass: "fsa-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",
@@ -163,7 +163,7 @@ const apiData = {
         },
         {
           uid: "UID-19",
-          tdClass: "",
+          tdClass: "fsa-text-align--right",
           ariaLabel: "",
           hasLink: "false",
           link: "",

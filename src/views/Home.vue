@@ -77,7 +77,6 @@
         <div>
             <button class="fsa-btn fsa-btn--secondary" data-behavior="open-modal" aria-controls="MODAL-UNIQUE-ID_01">Open Modal</button>
             <button class="fsa-btn fsa-btn--secondary" data-behavior="growl-show" aria-controls="GROWL-UNIQUE-ID_01">Open Growl</button>
-            <button class="fsa-btn fsa-btn--secondary" v-on:click="killExt">Kill Extention</button>
 
             <pkTable
               ID="UNIQUE_TABLE_ID"
@@ -159,16 +158,7 @@ export default {
 
   data(){
     return {
-      cardData: [
-        {
-          label: "Employer",
-          desc: "USDA"
-        },
-        { 
-          label: "Position",
-          desc: "Accountant"
-        }
-      ]
+      
     }
   },
 
@@ -199,7 +189,6 @@ export default {
   methods: {
 
     ...mapActions('users',{
-      killExt: 'killExtention',
       submitForm: 'addNewUser'
     }),
     
@@ -213,10 +202,8 @@ export default {
   },
 
   created(){
-    //this.$store.dispatch('navigation/getNavApi');
     this.$store.dispatch('users/getUsersApi');
     this.$store.dispatch('employees/getEmployeesApi');
-    //this.getUsers();
   }
 }
 </script>
