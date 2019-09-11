@@ -79,24 +79,15 @@
             <button class="fsa-btn fsa-btn--secondary" data-behavior="growl-show" aria-controls="GROWL-UNIQUE-ID_01">Open Growl</button>
             <button class="fsa-btn fsa-btn--secondary" v-on:click="killExt">Kill Extention</button>
 
-            <table class="fsa-table fsa-table--borderless fsa-table--responsive fsa-table--responsive-horizontal fic-inspections fic-inspections--status-filter-is-all" id="inspectionsTable">
-              <caption class="sr-only">Inspections</caption>
-              <thead class="fic-inspections__thead">
-                <tr class="fic-inspections__row--thead">
-                  <th class="fsa-table__th--sticky"><button type="button" class="fsa-table__sort">Full Name</button></th>
-                  <th class="fsa-table__th--sticky"><button type="button" class="fsa-table__sort">Email Address</button></th>
-                  <th class="fsa-table__th--sticky"><button type="button" class="fsa-table__sort">Actions</button></th>
-                </tr>
-              </thead>
-              <tbody class="fic-inspections__tbody" id="pt__progress-alt-1">
-                <tr v-for="user in users" class="fic-inspections__row" data-status="is-complete" data-assignee="assignedto-norm-peterson">
-                  <td aria-label="Name">{{ user.name }}</td>
-                  <td aria-label="Email">{{ user.email }}</td>
-                  <td aria-label="Actions Button"><button class="fsa-btn fsa-btn--secondary">Delete</button></td>
-                </tr>
-              </tbody>
-            </table>
-            
+            <pkTable
+              ID="UNIQUE_TABLE_ID"
+              SR_CAPTION="A table of employees"
+              EXTRA_CLASS="fsa-table--responsive fsa-table--responsive-horizontal"
+              :HEADERS_DATA="tableHeadersData"
+              :TABLE_DATA="tableData" 
+            >
+            </pkTable>
+          
           </div>  
         </div>
       </div>
@@ -146,7 +137,7 @@ import baseFooter from '../partials/baseFooter';
 
 // COMPONENTS
 import field from '../components/field/field';
-import card from '../components/card/card';
+import table from '../components/table/table';
 import modal from '../components/modal/modal';
 import growl from '../components/growl/growl';
 import whiteout from '../components/whiteout/whiteout';
@@ -159,8 +150,8 @@ export default {
   components: {
     baseHeader: baseHeader,
     baseFooter: baseFooter,
-    card: card,
     field: field,
+    pkTable: table,
     modal: modal,
     growl: growl,
     whiteout: whiteout,
@@ -186,10 +177,22 @@ export default {
     ...mapState({
       navigationData: state => state.navigation.all,
       users: state => state.users.all,
+      employees: state => state.employees.all,
     }),
+
     ...mapGetters('users', {
       fatUsers: 'fatUsers'
-    })
+    }),
+
+    tableHeadersData: function(){
+      let emp = this.$store.state.employees.all;
+      return emp.headerData;
+    },
+
+    tableData: function(){
+      let emp = this.$store.state.employees.all;
+      return emp.tableData;
+    }
   },
   
 
@@ -212,6 +215,7 @@ export default {
   created(){
     //this.$store.dispatch('navigation/getNavApi');
     this.$store.dispatch('users/getUsersApi');
+    this.$store.dispatch('employees/getEmployeesApi');
     //this.getUsers();
   }
 }
