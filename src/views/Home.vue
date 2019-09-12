@@ -78,15 +78,26 @@
             <button class="fsa-btn fsa-btn--secondary" data-behavior="open-modal" aria-controls="MODAL-UNIQUE-ID_01">Open Modal</button>
             <button class="fsa-btn fsa-btn--secondary" data-behavior="growl-show" aria-controls="GROWL-UNIQUE-ID_01">Open Growl</button>
 
+            <pagination
+              ID="UNIQUE_PAGINATION_ID"
+              EXTRA_CLASS=""
+              :TOTAL_PAGES="totalPages"
+              :ITEMS_PER_PAGE="itemsPerPage"
+              :CURRENT_PAGE="currentPage"
+              :DISPLAY_PAGINATION=true
+              :TOTAL_ITEMS="totalItems"
+              :NUMBER_SPREAD="numberSpread" 
+            ></pagination>
+
             <pkTable
               ID="UNIQUE_TABLE_ID"
               SR_CAPTION="A table of employees"
               EXTRA_CLASS="fsa-table--responsive fsa-table--responsive-horizontal"
               :HEADERS_DATA="tableHeadersData"
-              :TABLE_DATA="tableData" 
-            >
-            </pkTable>
-          
+              :TABLE_DATA="tableData"
+              USE_PAGINATION="false" 
+            ></pkTable>
+
           </div>  
         </div>
       </div>
@@ -137,12 +148,14 @@ import baseFooter from '../partials/baseFooter';
 // COMPONENTS
 import field from '../components/field/field';
 import table from '../components/table/table';
+import pagination from '../components/pagination/pagination';
 import modal from '../components/modal/modal';
 import growl from '../components/growl/growl';
 import whiteout from '../components/whiteout/whiteout';
 
 import { mapState, mapGetters, mapActions } from 'vuex';
 import growlVue from '../components/growl/growl.vue';
+import paginationVue from '../components/pagination/pagination.vue';
 
 export default {
 
@@ -151,6 +164,7 @@ export default {
     baseFooter: baseFooter,
     field: field,
     pkTable: table,
+    pagination: pagination,
     modal: modal,
     growl: growl,
     whiteout: whiteout,
@@ -158,7 +172,9 @@ export default {
 
   data(){
     return {
-      
+      itemsPerPage: 8,
+      currentPage: 2,
+      numberSpread: 7
     }
   },
 
@@ -182,6 +198,18 @@ export default {
     tableData: function(){
       let emp = this.$store.state.employees.all;
       return emp.tableData;
+    },
+
+    totalItems: function(){
+      let emp = this.$store.state.employees.all;
+      let totalItems = emp.tableData ? emp.tableData.length : 0;
+      return totalItems;
+    },
+
+    totalPages: function(){
+      let emp = this.$store.state.employees.all;
+      let totalItems = emp.tableData ? emp.tableData.length : 0;
+      return Math.ceil( totalItems / this.itemsPerPage );
     }
   },
   

@@ -33,6 +33,11 @@
     </tbody>
 
   </table>
+
+  <!-- BEGIN PAGINATION -->
+
+
+  <!-- end Pagination -->
 </template>
 <script>
 export default {
@@ -41,7 +46,8 @@ export default {
     EXTRA_CLASS: String,
     SR_CAPTION: String,
     HEADERS_DATA: Array,
-    TABLE_DATA: Array,    
+    TABLE_DATA: Array,
+    USE_PAGINATION: String,    
   },
 
   data: function(){
@@ -56,6 +62,12 @@ export default {
     },
     tblRows: function(){
       return this.TABLE_DATA
+    }
+  },
+
+  methods: {
+    createPagination: function(data){
+
     }
   }
 }
