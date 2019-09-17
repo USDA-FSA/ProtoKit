@@ -1,0 +1,115 @@
+
+<template>
+  <div>
+    <whiteout></whiteout>
+    <baseHeader></baseHeader>
+
+    <main id="main-content" tabindex="-1">
+      <div class="fsa-section">
+        <div class="fsa-section__bd">
+        <h1>Table &amp; Pagination</h1>
+        <div>
+
+            <pagination
+              ID="UNIQUE_PAGINATION_ID"
+              EXTRA_CLASS=""
+              :TOTAL_PAGES="totalPages"
+              :ITEMS_PER_PAGE="itemsPerPage"
+              :CURRENT_PAGE="currentPage"
+              :DISPLAY_PAGINATION=true
+              :TOTAL_ITEMS="totalItems"
+              :NUMBER_SPREAD="numberSpread" 
+            ></pagination>
+
+            <pkTable
+              ID="UNIQUE_TABLE_ID"
+              SR_CAPTION="A table of employees"
+              EXTRA_CLASS="fsa-table--responsive fsa-table--responsive-horizontal"
+              :HEADERS_DATA="tableHeadersData"
+              :TABLE_DATA="tableData"
+              USE_PAGINATION="false" 
+            ></pkTable>
+
+          </div>  
+        </div>
+      </div>
+    </main>
+
+    <baseFooter></baseFooter>
+  </div>
+</template>
+
+<script>
+// PARTIALS
+import baseHeader from '../../partials/baseHeader';
+import baseFooter from '../../partials/baseFooter';
+
+// COMPONENTS
+
+import table from '../../components/table/table';
+import pagination from '../../components/pagination/pagination';
+
+import { mapState, mapGetters, mapActions } from 'vuex';
+
+export default {
+
+  components: {
+    baseHeader: baseHeader,
+    baseFooter: baseFooter,
+    pkTable: table,
+    pagination: pagination,
+  },
+
+  data(){
+    return {
+      itemsPerPage: 8,
+      currentPage: 2,
+      numberSpread: 7
+    }
+  },
+
+
+  computed: {
+    ...mapState({
+      navigationData: state => state.navigation.all,
+      employees: state => state.employees.all,
+    }),
+
+    ...mapGetters('users', {
+      fatUsers: 'fatUsers'
+    }),
+
+    tableHeadersData: function(){
+      let emp = this.$store.state.employees.all;
+      return emp.headerData;
+    },
+
+    tableData: function(){
+      let emp = this.$store.state.employees.all;
+      return emp.tableData;
+    },
+
+    totalItems: function(){
+      let emp = this.$store.state.employees.all;
+      let totalItems = emp.tableData ? emp.tableData.length : 0;
+      return totalItems;
+    },
+
+    totalPages: function(){
+      let emp = this.$store.state.employees.all;
+      let totalItems = emp.tableData ? emp.tableData.length : 0;
+      return Math.ceil( totalItems / this.itemsPerPage );
+    }
+  },
+  
+
+  methods: {
+
+
+  },
+
+  created(){
+    this.$store.dispatch('employees/getEmployeesApi');
+  }
+}
+</script>

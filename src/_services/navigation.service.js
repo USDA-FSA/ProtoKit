@@ -16,23 +16,23 @@ const apiData = [
     columnClass: ""
   },
   {
-    uid: "reports-id",
-    label: "Reports",
-    path: "/reports",
+    uid: "component-demos-id",
+    label: "Component Demos",
+    path: "/demos",
     hasChild: "true",
     columnClass: "fsa-nav-global__list-item--multi-column",
     hasHeaders: "false",
     children: [
       {
-        uid: "reports-overview-id",
-        label: "Overview",
-        path: "/reports/overview",
+        uid: "modal-growl-id",
+        label: "Modal and Growl",
+        path: "/demos/modal-growl",
         hasChild: "false",
       },
       {
-        uid: "reporting-configuration-id",
-        label: "Reporting Configuration",
-        path: "/reports/reporting-configuration",
+        uid: "table-pagination-id",
+        label: "Table and Pagination",
+        path: "/demos/table",
         hasChild: "false",
       },
       {
@@ -128,27 +128,27 @@ const apiData = [
     ],
   },
   {
-    uid: "transation-id",
-    label: "Transaction",
-    path: "/transaction",
+    uid: "reports-id",
+    label: "Reports",
+    path: "/reports",
     hasChild: "true",
     columnClass: "fsa-nav-global__list-item--multi-column",
     hasHeaders: "true",
     children: [
       {
-        uid: "cyclical-purchasing-id",
+        uid: "reports-overview-id",
         header: "Cyclical Purchasing",
         group: [
           {
             uid: "cyclical-purchasing-overview-id",
             label: "Overview",
-            path: "/transaction/cp-overview",
+            path: "/reports/overview",
             hasChild: "false",
           },
           {
-            uid: "cp-budgetary-max-funding-id",
-            label: "Budgetary Max Funding",
-            path: "/transaction/budgetary-max-funding",
+            uid: "rps-investment-placement-id",
+            label: "Investment Placement",
+            path: "/reports/investment-placement",
             hasChild: "false",
           },
           {

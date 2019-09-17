@@ -122,16 +122,19 @@ export default {
     },
 
     addUnfocusListener: function(item){
+      /// this.ref below CAUSES SCRIPT TO NOT RUN
+      item.ref = this;
       document.addEventListener('click', function(event){
         var isClickInside = item.contains(event.target);
         if(!isClickInside){
-          this.loopItems('closeAllMenus');
+          item.ref.loopItems('closeAllMenus');
         }
       });
     },
 
     listenForClickAway: function(){
-      this.loopItems('addUnfocusListener');
+      // commented out because causing issues
+      //this.loopItems('addUnfocusListener');
     },
 
     listenForKeys: function(e){ if(e.keyCode == 27) this.loopItems('closeAllMenus') },
@@ -143,6 +146,7 @@ export default {
       let menuItems = document.getElementsByClassName('fsa-nav-global__link--has-sub-menu');
       for (let i = 0; i < menuItems.length; i++) {
         let item = menuItems[i];
+        item.ref = this;
         if(action=='addFocusListeners') this.addFocusListeners(item);
         else if(action=='removeFocusListeners') this.removeFocusListeners(item);
         else if(action=='closeAllMenus') this.closeMenu(item);
