@@ -93,7 +93,6 @@ export default {
 
 
       } else {
-        console.log("TACO");
         growl.addEventListener( this.getAnimationString(growl), this.showGrowlDelay);
       }
 
