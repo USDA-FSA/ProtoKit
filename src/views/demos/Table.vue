@@ -12,7 +12,7 @@
 
             <pagination
               ID="UNIQUE_PAGINATION_ID"
-              EXTRA_CLASS=""
+              EXTRA_CLASSES=""
               :TOTAL_PAGES="totalPages"
               :ITEMS_PER_PAGE="itemsPerPage"
               :CURRENT_PAGE="currentPage"
@@ -24,7 +24,7 @@
             <pkTable
               ID="UNIQUE_TABLE_ID"
               SR_CAPTION="A table of employees"
-              EXTRA_CLASS="fsa-table--responsive fsa-table--responsive-horizontal"
+              EXTRA_CLASSES="fsa-table--responsive fsa-table--responsive-horizontal"
               :HEADERS_DATA="tableHeadersData"
               :TABLE_DATA="tableData"
               USE_PAGINATION="false" 

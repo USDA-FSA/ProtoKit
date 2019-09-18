@@ -1,5 +1,5 @@
 <template>
-  <span :class="'fsa-label ' + VARIATION + ' ' + LARGE + ' ' + CLASS_EXTRA" :title="ATTR_TITLE">
+  <span :class="'fsa-label '+ EXTRA_CLASSES" :title="ATTR_TITLE">
     {{ TEXT }}
   </span>
 </template>
@@ -7,9 +7,7 @@
 export default {
   props: {
     TEXT: String,
-    VARIATION: String,
-    LARGE: String,
-    CLASS_EXTRA: String,
+    EXTRA_CLASSES: String,
     ATTR_TITLE: String,
   },
 }

@@ -12,7 +12,7 @@
 
             <field
               ID="name"
-              CLASS_EXTRA=""
+              EXTRA_CLASSES=""
               LABEL="Full Name"
               INPUT_VALUE=""
               INPUT_TYPE="text"
@@ -39,7 +39,7 @@
 
             <field
               ID="email"
-              CLASS_EXTRA=""
+              EXTRA_CLASSES=""
               LABEL="E-Mail"
               INPUT_VALUE=""
               INPUT_TYPE="text"
