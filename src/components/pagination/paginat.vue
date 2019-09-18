@@ -84,7 +84,7 @@
 export default {
   props: {
     ID: String,
-    EXTRA_CLASS: String,
+    EXTRA_CLASSES: String,
     TOTAL_PAGES: Number,
     ITEMS_PER_PAGE: Number,
     CURRENT_PAGE: Number,  

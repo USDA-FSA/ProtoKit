@@ -4,7 +4,7 @@
       <div class="fsa-nav-global__bd">
         <ul class="fsa-nav-global__list" aria-label="Primary Navigation" id="primary-navigation">
           <li v-for="item in items" :class="'fsa-nav-global__list-item '+ item.columnClass">
-            <div v-if="item.hasChild=='true' && item.columnClass==CLASS_EXTRA && item.hasHeaders=='true'">
+            <div v-if="item.hasChild=='true' && item.columnClass==EXTRA_CLASSES && item.hasHeaders=='true'">
               <button :id="item.uid+'-BTN'" v-on:click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
               </button>
@@ -21,7 +21,7 @@
                 </div>
               </div>
             </div>
-            <div v-else-if="item.hasChild=='true' && item.columnClass==CLASS_EXTRA && item.hasHeaders=='false'">
+            <div v-else-if="item.hasChild=='true' && item.columnClass==EXTRA_CLASSES && item.hasHeaders=='false'">
               <button :id="item.uid+'-BTN'" v-on:click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
               </button>
@@ -67,7 +67,7 @@ export default {
 
   props: {
     NAV_DATA: Array,
-    CLASS_EXTRA: String,
+    EXTRA_CLASSES: String,
   },
 
   data: function(){

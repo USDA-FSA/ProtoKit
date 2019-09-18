@@ -12,9 +12,7 @@
                 
                 <fsaLabel
                   TEXT="GREAT"
-                  VARIATION="fsa-label--success"
-                  LARGE="fsa-label--large"
-                  CLASS_EXTRA=""
+                  EXTRA_CLASSES="fsa-label--success fsa-label--large"
                   ATTR_TITLE="Great Person"
                 ></fsaLabel>
 

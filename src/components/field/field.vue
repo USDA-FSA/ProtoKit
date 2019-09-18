@@ -1,5 +1,5 @@
 <template>
-  <div :class="'fsa-field '+ERROR_FIELD+' '+ CLASS_EXTRA">
+  <div :class="'fsa-field '+ERROR_FIELD+' '+ EXTRA_CLASSES">
     <label
       class="fsa-field__label"
       :for="ID"
@@ -30,7 +30,7 @@ export default {
     INPUT_VALUE: String,
     INPUT_TYPE: String,
     BEHAVIOR: String,
-    CLASS_EXTRA: String,
+    EXTRA_CLASSES: String,
     ERROR_FIELD: String,
     MESSAGE: String,
     HELP: String,
@@ -48,11 +48,5 @@ export default {
     }
   },
 
-  components: {
-    
-  },
-  computed: {
-     
-  }
 }
 </script>

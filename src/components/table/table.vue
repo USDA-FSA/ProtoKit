@@ -1,5 +1,5 @@
 <template>
-  <table :class="'fsa-table ' + EXTRA_CLASS" :id="ID">
+  <table :class="'fsa-table ' + EXTRA_CLASSES" :id="ID">
     <caption class="sr-only">{{ SR_CAPTION }}</caption>
 
     <thead>
@@ -43,7 +43,7 @@
 export default {
   props: {
     ID: String,
-    EXTRA_CLASS: String,
+    EXTRA_CLASSES: String,
     SR_CAPTION: String,
     HEADERS_DATA: Array,
     TABLE_DATA: Array,
