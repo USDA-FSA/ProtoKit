@@ -6,7 +6,7 @@
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
         <div class="fsa-section__bd">
-          <h1>Who Are You?</h1>
+          <h1>Home Page</h1>
 
           <form @submit.prevent="handleSubmit">
 
