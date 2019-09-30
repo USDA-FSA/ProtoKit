@@ -75,17 +75,14 @@
 </template>
 
 <script>
-
 // PARTIALS
 import baseHeader from '../partials/baseHeader';
 import baseFooter from '../partials/baseFooter';
 
 // COMPONENTS
 import field from '../components/field/field';
-import table from '../components/table/table';
-import pagination from '../components/pagination/pagination';
 
-import { mapActions } from 'vuex';
+//import { mapActions } from 'vuex';
 
 export default {
 
@@ -93,8 +90,6 @@ export default {
     baseHeader: baseHeader,
     baseFooter: baseFooter,
     field: field,
-    pkTable: table,
-    pagination: pagination,
   },
   
   computed: {

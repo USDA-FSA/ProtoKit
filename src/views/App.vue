@@ -5,7 +5,7 @@
 
 <script>
 
-import { mapActions } from 'vuex';
+//import { mapActions } from 'vuex';
 //import Home from './Home';
 //import Boilerplate from './Boilerplate';
 

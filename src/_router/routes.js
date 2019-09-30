@@ -3,14 +3,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import Home from '../views/Home';
+const Home = () => import('../views/Home');
 const Boilerplate = () => import('../views/Boilerplate');
 const ModalGrowl = () => import('../views/demos/Modal-Growl');
 const Table = () => import('../views/demos/Table');
 const Search = () => import('../views/demos/Search');
 const ReportsOverview = () => import('../views/reports/Overview');
 const InvestmentPlacement = () => import('../views/reports/Investment-Placement');
-
 
 
 Vue.use( Router );
