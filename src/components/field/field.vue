@@ -17,6 +17,7 @@
       :data-behavior="BEHAVIOR"
       :aria-describedby="ARIA_DESCRIBEDBY"
       >
+    <slot name="labelDescribe"></slot>
     <slot v-if="HAS_HELP" name="help"></slot>
     <slot v-if="HAS_MESSAGE" name="message"></slot>
   </div>

@@ -75,6 +75,7 @@
 </template>
 
 <script>
+
 // PARTIALS
 import baseHeader from '../partials/baseHeader';
 import baseFooter from '../partials/baseFooter';
@@ -84,7 +85,7 @@ import field from '../components/field/field';
 import table from '../components/table/table';
 import pagination from '../components/pagination/pagination';
 
-import { mapState, mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
 
@@ -95,26 +96,20 @@ export default {
     pkTable: table,
     pagination: pagination,
   },
-
-  data(){
-    return {
-      itemsPerPage: 8,
-      currentPage: 2,
-      numberSpread: 7
-    }
-  },
-
-
+  
   computed: {
-    ...mapState({
-      navigationData: state => state.navigation.all,
-      users: state => state.users.all,
-      employees: state => state.employees.all,
-    }),
+  
+    navigationData: function(){
+      return this.$store.state.navigation.all;
+    },
 
-    ...mapGetters('users', {
-      fatUsers: 'fatUsers'
-    }),
+    users: function(){
+      return this.$store.state.users.all;
+    },
+
+    employees: function(){
+      return this.$store.state.employees.all;
+    },
 
     tableHeadersData: function(){
       let emp = this.$store.state.employees.all;
@@ -142,9 +137,10 @@ export default {
 
   methods: {
 
-    ...mapActions('users',{
-      submitForm: 'addNewUser'
-    }),
+    submitForm: function( user ){
+      this.$store.dispatch('users/addNewUser', user);
+    },
+
     
     handleSubmit(e){
       let user = {name: e.target.name.value, email: e.target.email.value};

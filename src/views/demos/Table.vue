@@ -1,7 +1,6 @@
 
 <template>
   <div>
-    <whiteout></whiteout>
     <baseHeader></baseHeader>
 
     <main id="main-content" tabindex="-1">
@@ -60,6 +59,7 @@ export default {
     pagination: pagination,
   },
 
+  
   data(){
     return {
       itemsPerPage: 8,
@@ -67,6 +67,20 @@ export default {
       numberSpread: 7
     }
   },
+ 
+
+  /* subscriptions: function(){
+
+    let itemsPerPage$ = new Subject();
+    let currentPage$
+    let numberSpread
+
+    return {
+      itemsPerPage$, 
+      currentPage$,
+      numberSpread$,
+    }
+  }, */
 
 
   computed: {

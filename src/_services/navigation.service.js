@@ -36,17 +36,18 @@ const apiData = [
         hasChild: "false",
       },
       {
+        uid: "search-demo-id",
+        label: "Search wtih RxJS",
+        path: "/demos/search",
+        hasChild: "false",
+      },
+      {
         uid: "investment-placement",
         label: "Investment Placement",
         path: "/reports/investment-placement",
         hasChild: "false",
       },
-      {
-        uid: "burden-investment",
-        label: "Burden Investment",
-        path: "/reports/burden-investment",
-        hasChild: "false",
-      },
+      
       {
         uid: "performance-management-id",
         label: "Performance Management",

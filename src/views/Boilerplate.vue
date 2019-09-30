@@ -35,8 +35,10 @@
 <script>
 import baseHeader from '../partials/baseHeader';
 import baseFooter from '../partials/baseFooter';
-import card from '../components/card/card';
-import label from '../components/label/label';
+//import card from '../components/card/card';
+//import label from '../components/label/label';
+const card = () => import('../components/card/card');
+const label = () => import('../components/label/label');
 
 import { mapState } from 'vuex';
 
