@@ -1,6 +1,14 @@
 
 import { service } from '../_services/users.service';
 
+const utils = {
+
+  removeExt: function( ext, str ){
+    return str.split(ext)[0];
+  },
+
+};
+
 const state = {
   all: []
 };
@@ -45,7 +53,7 @@ const mutations = {
 
   KILL_EXTENTION( state ){
     let kx = state.all.forEach( user => {
-      user.email = user.email.split('.com')[0];
+      user.email = utils.removeExt('.com', user.email) ;
     });
     return kx;
   },

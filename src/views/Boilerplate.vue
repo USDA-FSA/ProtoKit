@@ -6,6 +6,9 @@
       <div class="fsa-section">
         <div class="fsa-section__bd">
           <h1>Boil the Ocean</h1>
+          <p>
+            <button class="fsa-btn fsa-btn--secondary" @click="removeExtentions">Remove Email Extentions</button>
+          </p>
           <ul v-for="user in users">
             <li>
               <p>{{ user.name }} 
@@ -70,6 +73,15 @@ export default {
     ...mapState({
       users: state => state.users.all
     })
-  }
+  },
+
+  methods: {
+    
+    removeExtentions(){
+      this.$store.dispatch('users/killExtention');
+    },
+
+  },
+
 }
 </script>

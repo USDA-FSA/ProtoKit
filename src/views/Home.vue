@@ -136,12 +136,19 @@ export default {
       this.$store.dispatch('users/addNewUser', user);
     },
 
+    resetForm: function(t){
+      t.name.value = "";
+      t.email.value = "";
+    },
     
     handleSubmit(e){
-      let user = {name: e.target.name.value, email: e.target.email.value};
-      e.target.name.value = "";
-      e.target.email.value = "";
-      this.submitForm( user );
+      this.submitForm(
+        {
+          name: e.target.name.value,
+          email: e.target.email.value
+        }  
+      );
+      this.resetForm(e.target);
     },
 
   },
