@@ -9,7 +9,6 @@ import { fromFetch } from 'rxjs/fetch';
 import { switchMap, catchError, map } from 'rxjs/operators';
 
 const URL = 'https://jsonplaceholder.typicode.com/users';
-//const URL = 'https://firestore.googleapis.com/v1/projects/tutorial-201928345/databases/(default)/documents/users/firstUser'
 
 const simplifyUserData = (user) => {
     return {

@@ -7,7 +7,7 @@
         <div class="fsa-section__bd">
           <h1>Boil the Ocean</h1>
           <p>
-            <button class="fsa-btn fsa-btn--secondary" @click="removeExtentions">Remove Email Extentions</button>
+            <button class="fsa-btn fsa-btn--secondary" @click="removeExtentions">Remove .com Extentions</button>
           </p>
           <ul v-for="user in users">
             <li>
