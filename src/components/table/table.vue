@@ -50,12 +50,6 @@ export default {
     USE_PAGINATION: String,    
   },
 
-  data: function(){
-    return {
-      
-    }
-  },
-
   computed: {
      tblHeaders: function(){
       return this.HEADERS_DATA
