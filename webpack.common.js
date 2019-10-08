@@ -7,6 +7,7 @@ const HTMLBeautifyPlugin = require('html-beautify-webpack-plugin');
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 //const StyleLintPlugin = require('stylelint-webpack-plugin');
 
@@ -228,6 +229,30 @@ module.exports = {
       inject: true,
       chunksSortMode: 'dependency'
     }),
+
+    new WorkboxPlugin.GenerateSW({
+      // Do not precache images
+      exclude: [/\.(?:png|jpg|jpeg|svg)$/],
+
+      // Define runtime caching rules.
+      runtimeCaching: [{
+        // Match any request that ends with .png, .jpg, .jpeg or .svg.
+        urlPattern: /\.(?:png|jpg|jpeg|svg)$/,
+
+        // Apply a cache-first strategy.
+        handler: 'CacheFirst',
+
+        options: {
+          // Use a custom cache name.
+          cacheName: 'images',
+
+          // Only cache 10 images.
+          expiration: {
+            maxEntries: 10,
+          },
+        },
+      }],
+    }),
 /*
     new HTMLBeautifyPlugin({
       config: {
@@ -259,6 +284,10 @@ module.exports = {
       {
         from: customizations.fsaStyleFontsPath,
         to: './fonts/'
+      },
+      {
+        from: './src/serviceWorker.js',
+        to: './'
       }
     ]),
     

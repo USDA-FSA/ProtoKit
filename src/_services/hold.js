@@ -8,8 +8,7 @@
 import { fromFetch } from 'rxjs/fetch';
 import { switchMap, catchError, map } from 'rxjs/operators';
 
-const URL = 'https://jsonplaceholder.typicode.com/users';
-//const URL = 'https://firestore.googleapis.com/v1/projects/tutorial-201928345/databases/(default)/documents/users/firstUser'
+const URL = 'https://api.github.com/users?per_page=50';
 
 const simplifyUserData = (user) => {
     return {
@@ -20,11 +19,9 @@ const simplifyUserData = (user) => {
 
 export const service = {
 
-  /*
-  getAllUsers( callback ){
+/*   getAllUsers( callback ){
     //setTimeout( () => callback( users ) ,50);
-  }
-  */
+  } */
 
   getAllUsers( callback ){
 
@@ -52,5 +49,19 @@ export const service = {
 
     
   }
+
+/*     let users$ = new Observable( subscriber => {
+      mergeMap( _ => fetch(URL)
+      .mergeMap(data => data.json())
+      .mergeAll()
+      .map(simplifyUserData)
+      .bindCallback( callback )
+    });
+
+    users$.subscribe({
+      
+    }); */
+
+  
   
 };

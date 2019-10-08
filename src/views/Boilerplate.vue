@@ -71,7 +71,9 @@ export default {
 
   computed: {
     ...mapState({
-      users: state => state.users.all
+      users: state => {
+        return state.users.all.reverse();
+      }
     })
   },
 

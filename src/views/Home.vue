@@ -63,7 +63,7 @@
 
             </field>
 
-            <button class="fsa-btn fsa-btn--secondary" type="submit">Set User</button> 
+            <button class="fsa-btn fsa-btn--secondary" type="submit">Add User</button> 
 
           </form>
         </div>
