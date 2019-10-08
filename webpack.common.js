@@ -284,10 +284,6 @@ module.exports = {
       {
         from: customizations.fsaStyleFontsPath,
         to: './fonts/'
-      },
-      {
-        from: './src/serviceWorker.js',
-        to: './'
       }
     ]),
     

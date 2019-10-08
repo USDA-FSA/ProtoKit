@@ -89,28 +89,25 @@ export default {
     toggleMenu: function(e){
 
       let item = e.currentTarget;
-      let id = item.getAttribute('aria-controls');
       let expanded = item.getAttribute('aria-expanded');
 
       this.loopItems('closeAllMenus');
 
-      if (expanded=="true") {
-        item.setAttribute('aria-expanded', 'false');
-        document.getElementById(id).setAttribute('aria-hidden', 'true');        
-      } else {
-        item.setAttribute('aria-expanded', 'true');
-        document.getElementById(id).setAttribute('aria-hidden', 'false');
-      } 
+      if (expanded=="true") this.closeMenu( item );
+      else this.openMenu( item );
       
+    },
+
+    openMenu: function(item){
+      let id = item.getAttribute('aria-controls');
+      item.setAttribute('aria-expanded', 'true');
+      document.getElementById(id).setAttribute('aria-hidden', 'false');
     },
 
     closeMenu: function(item){
       let id = item.getAttribute('aria-controls');
-      let expanded = item.getAttribute('aria-expanded');
-      if ( expanded ) {
-        item.setAttribute('aria-expanded', 'false');
-        document.getElementById(id).setAttribute('aria-hidden', 'true');
-      }
+      item.setAttribute('aria-expanded', 'false');
+      document.getElementById(id).setAttribute('aria-hidden', 'true');
     },
 
     addFocusListeners: function(item){
@@ -147,12 +144,16 @@ export default {
       for (let i = 0; i < menuItems.length; i++) {
         let item = menuItems[i];
         item.ref = this;
-        if(action=='addFocusListeners') this.addFocusListeners(item);
-        else if(action=='removeFocusListeners') this.removeFocusListeners(item);
-        else if(action=='closeAllMenus') this.closeMenu(item);
-        else if(action=='addUnfocusListener') this.addUnfocusListener(item);
+        this.addActionListener(action, item);
       }
     },
+
+    addActionListener: function( action, item){
+      if(action=='addFocusListeners') this.addFocusListeners(item);
+      else if(action=='removeFocusListeners') this.removeFocusListeners(item);
+      else if(action=='closeAllMenus') this.closeMenu(item);
+      else if(action=='addUnfocusListener') this.addUnfocusListener(item);
+    }
 
   },
 
