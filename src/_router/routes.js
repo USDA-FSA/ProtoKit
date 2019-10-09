@@ -37,12 +37,6 @@ export default new Router({
       component: Table
     },
 
-    { 
-      path: '/demos/search',
-      name: 'search',
-      component: Search
-    },
-
     { path: '/reports/overview',
       name: 'reports-overview',
       component: ReportsOverview
