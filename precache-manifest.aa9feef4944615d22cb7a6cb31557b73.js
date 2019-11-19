@@ -64,7 +64,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/protokit/../dist/fonts/sourcesanspro-regular-webfont.woff2"
   },
   {
-    "revision": "0b77ea4a7a75f2834622eab8bbf03d16",
+    "revision": "22a2db9e18129010164860c037fc3737",
     "url": "/protokit/./index.html"
   },
   {
@@ -132,19 +132,19 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/protokit/8.bundle.js.map"
   },
   {
-    "revision": "6b8cbc8201589f394eea",
+    "revision": "f795794704e226c427a1",
     "url": "/protokit/css/main.css"
   },
   {
-    "revision": "6b8cbc8201589f394eea",
+    "revision": "f795794704e226c427a1",
     "url": "/protokit/css/main.css.map"
   },
   {
-    "revision": "6b8cbc8201589f394eea",
+    "revision": "f795794704e226c427a1",
     "url": "/protokit/main.bundle.js"
   },
   {
-    "revision": "6b8cbc8201589f394eea",
+    "revision": "f795794704e226c427a1",
     "url": "/protokit/main.bundle.js.map"
   }
 ]);
