@@ -9,6 +9,7 @@ const merge = require('webpack-merge');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common.js');
 
 

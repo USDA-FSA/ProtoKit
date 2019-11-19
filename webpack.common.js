@@ -52,10 +52,6 @@ module.exports = {
     ]
   },
 
-  output: {
-    publicPath: '/',
-  },
-
   resolve: {
     extensions: ['.js', '.vue'],
     modules: ['node_modules', 'src']
@@ -101,15 +97,6 @@ module.exports = {
           }
         ]
       },
-      {
-        test: require.resolve("jquery"),
-        use: [
-          {
-            loader: "imports-loader?$=jquery"
-          }
-        ]
-      },
-
       {
         /* Future option - allow customization of paths to include/exclude? */
         'exclude': styleArray,
@@ -223,12 +210,14 @@ module.exports = {
     
     new VueLoaderPlugin(),
 
+    
     new HTMLWebpackPlugin({
       filename: './index.html',
       template: './src/index.html',
       inject: true,
       chunksSortMode: 'dependency'
     }),
+    
 
     new WorkboxPlugin.GenerateSW({
       // Do not precache images
@@ -284,7 +273,11 @@ module.exports = {
       {
         from: customizations.fsaStyleFontsPath,
         to: './fonts/'
-      }
+      },
+      {
+        from: './src/404.html',
+        to: './'
+      },
     ]),
     
     new MiniCssExtractPlugin({
