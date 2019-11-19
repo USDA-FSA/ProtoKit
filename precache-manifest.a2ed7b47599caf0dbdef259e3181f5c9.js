@@ -64,7 +64,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/protokit/../dist/fonts/sourcesanspro-regular-webfont.woff2"
   },
   {
-    "revision": "b4f5e42fffdeaf7c291ffb0ea8129e6a",
+    "revision": "9ee04d6d87fd93d849eeabe8bf928c68",
     "url": "/protokit/./index.html"
   },
   {
