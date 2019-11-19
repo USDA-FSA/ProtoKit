@@ -64,87 +64,83 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/protokit/../dist/fonts/sourcesanspro-regular-webfont.woff2"
   },
   {
-    "revision": "9ee04d6d87fd93d849eeabe8bf928c68",
-    "url": "/protokit/./index.html"
-  },
-  {
-    "revision": "eff2402e92b259ca58c3",
+    "revision": "ed963a7eee35e0637761",
     "url": "/protokit/1.bundle.js"
   },
   {
-    "revision": "eff2402e92b259ca58c3",
+    "revision": "ed963a7eee35e0637761",
     "url": "/protokit/1.bundle.js.map"
   },
   {
-    "revision": "e82935ccdda9cec617df",
+    "revision": "ec2c4844c07e044d7386",
     "url": "/protokit/2.bundle.js"
   },
   {
-    "revision": "e82935ccdda9cec617df",
+    "revision": "ec2c4844c07e044d7386",
     "url": "/protokit/2.bundle.js.map"
   },
   {
-    "revision": "a9ea4efb31e2d72d2628",
+    "revision": "fd1d459fc32c435ad09b",
     "url": "/protokit/3.bundle.js"
   },
   {
-    "revision": "a9ea4efb31e2d72d2628",
+    "revision": "fd1d459fc32c435ad09b",
     "url": "/protokit/3.bundle.js.map"
   },
   {
-    "revision": "51cae074f3192cfcf1f2",
+    "revision": "6995412eac078fea8924",
     "url": "/protokit/4.bundle.js"
   },
   {
-    "revision": "51cae074f3192cfcf1f2",
+    "revision": "6995412eac078fea8924",
     "url": "/protokit/4.bundle.js.map"
   },
   {
-    "revision": "586eeaf014b35104929d",
+    "revision": "d9b11a716c611a77fc71",
     "url": "/protokit/5.bundle.js"
   },
   {
-    "revision": "586eeaf014b35104929d",
+    "revision": "d9b11a716c611a77fc71",
     "url": "/protokit/5.bundle.js.map"
   },
   {
-    "revision": "d0b2fbb7d871e9d4d7a2",
+    "revision": "214fd2afcd9eec91e21a",
     "url": "/protokit/6.bundle.js"
   },
   {
-    "revision": "d0b2fbb7d871e9d4d7a2",
+    "revision": "214fd2afcd9eec91e21a",
     "url": "/protokit/6.bundle.js.map"
   },
   {
-    "revision": "bf0564c9619f3e00f2eb",
+    "revision": "1f32bb2b6f9eb2429c97",
     "url": "/protokit/7.bundle.js"
   },
   {
-    "revision": "bf0564c9619f3e00f2eb",
+    "revision": "1f32bb2b6f9eb2429c97",
     "url": "/protokit/7.bundle.js.map"
   },
   {
-    "revision": "76a1a5413d8e76f3f403",
+    "revision": "26e7ab07b93e8a64a7bf",
     "url": "/protokit/8.bundle.js"
   },
   {
-    "revision": "76a1a5413d8e76f3f403",
+    "revision": "26e7ab07b93e8a64a7bf",
     "url": "/protokit/8.bundle.js.map"
   },
   {
-    "revision": "f795794704e226c427a1",
+    "revision": "5e03a68c1e1bc73ff774",
     "url": "/protokit/css/main.css"
   },
   {
-    "revision": "f795794704e226c427a1",
+    "revision": "5e03a68c1e1bc73ff774",
     "url": "/protokit/css/main.css.map"
   },
   {
-    "revision": "f795794704e226c427a1",
+    "revision": "5e03a68c1e1bc73ff774",
     "url": "/protokit/main.bundle.js"
   },
   {
-    "revision": "f795794704e226c427a1",
+    "revision": "5e03a68c1e1bc73ff774",
     "url": "/protokit/main.bundle.js.map"
   }
 ]);
