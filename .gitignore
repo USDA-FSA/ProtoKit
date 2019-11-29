@@ -6,5 +6,6 @@ Thumbs.db
 node_modules/
 dist/
 scratch.html
+config/
 .editorconfig
 package-lock.json
