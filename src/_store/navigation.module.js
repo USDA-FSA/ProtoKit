@@ -5,6 +5,11 @@ const state = {
   all: []
 };
 
+const getters = {
+  getNavigation(state){
+    return state.all;
+  }
+};
 
 const actions = {
 
@@ -27,6 +32,7 @@ const mutations = {
 export const navigation = {
   namespaced: true,
   state,
+  getters,
   actions,
   mutations
 };

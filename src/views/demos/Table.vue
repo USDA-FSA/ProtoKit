@@ -1,7 +1,6 @@
 
 <template>
   <div>
-    <whiteout></whiteout>
     <baseHeader></baseHeader>
 
     <main id="main-content" tabindex="-1">
@@ -12,7 +11,7 @@
 
             <pagination
               ID="UNIQUE_PAGINATION_ID"
-              EXTRA_CLASS=""
+              EXTRA_CLASSES=""
               :TOTAL_PAGES="totalPages"
               :ITEMS_PER_PAGE="itemsPerPage"
               :CURRENT_PAGE="currentPage"
@@ -24,7 +23,7 @@
             <pkTable
               ID="UNIQUE_TABLE_ID"
               SR_CAPTION="A table of employees"
-              EXTRA_CLASS="fsa-table--responsive fsa-table--responsive-horizontal"
+              EXTRA_CLASSES="fsa-table--responsive fsa-table--responsive-horizontal"
               :HEADERS_DATA="tableHeadersData"
               :TABLE_DATA="tableData"
               USE_PAGINATION="false" 
@@ -49,7 +48,6 @@ import baseFooter from '../../partials/baseFooter';
 import table from '../../components/table/table';
 import pagination from '../../components/pagination/pagination';
 
-import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
 
@@ -60,6 +58,7 @@ export default {
     pagination: pagination,
   },
 
+  
   data(){
     return {
       itemsPerPage: 8,
@@ -67,36 +66,49 @@ export default {
       numberSpread: 7
     }
   },
+ 
+
+  /* subscriptions: function(){
+
+    let itemsPerPage$ = new Subject();
+    let currentPage$
+    let numberSpread
+
+    return {
+      itemsPerPage$, 
+      currentPage$,
+      numberSpread$,
+    }
+  }, */
 
 
   computed: {
-    ...mapState({
-      navigationData: state => state.navigation.all,
-      employees: state => state.employees.all,
-    }),
+    navigationData: function(){
+      return this.$store.getters['navigation/getNavigation'];
+    },
 
-    ...mapGetters('users', {
-      fatUsers: 'fatUsers'
-    }),
+    employees: function(){
+      return this.$store.getters['employees/getEmployees'];
+    },
 
     tableHeadersData: function(){
-      let emp = this.$store.state.employees.all;
+      let emp = this.$store.getters['employees/getEmployees'];
       return emp.headerData;
     },
 
     tableData: function(){
-      let emp = this.$store.state.employees.all;
+      let emp = this.$store.getters['employees/getEmployees'];
       return emp.tableData;
     },
 
     totalItems: function(){
-      let emp = this.$store.state.employees.all;
+      let emp = this.$store.getters['employees/getEmployees'];
       let totalItems = emp.tableData ? emp.tableData.length : 0;
       return totalItems;
     },
 
     totalPages: function(){
-      let emp = this.$store.state.employees.all;
+      let emp = this.$store.getters['employees/getEmployees'];
       let totalItems = emp.tableData ? emp.tableData.length : 0;
       return Math.ceil( totalItems / this.itemsPerPage );
     }

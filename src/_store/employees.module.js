@@ -6,7 +6,9 @@ const state = {
 };
 
 const getters = {
-
+  getEmployees(state){
+    return state.all
+  }
 };
 
 const actions = {

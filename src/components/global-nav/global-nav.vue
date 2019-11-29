@@ -4,7 +4,7 @@
       <div class="fsa-nav-global__bd">
         <ul class="fsa-nav-global__list" aria-label="Primary Navigation" id="primary-navigation">
           <li v-for="item in items" :class="'fsa-nav-global__list-item '+ item.columnClass">
-            <div v-if="item.hasChild=='true' && item.columnClass==CLASS_EXTRA && item.hasHeaders=='true'">
+            <div v-if="item.hasChild=='true' && item.columnClass==EXTRA_CLASSES && item.hasHeaders=='true'">
               <button :id="item.uid+'-BTN'" v-on:click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
               </button>
@@ -21,7 +21,7 @@
                 </div>
               </div>
             </div>
-            <div v-else-if="item.hasChild=='true' && item.columnClass==CLASS_EXTRA && item.hasHeaders=='false'">
+            <div v-else-if="item.hasChild=='true' && item.columnClass==EXTRA_CLASSES && item.hasHeaders=='false'">
               <button :id="item.uid+'-BTN'" v-on:click="toggleMenu" class="fsa-nav-global__link fsa-nav-global__link--has-sub-menu" type="button" aria-expanded="false" :aria-controls="item.uid">
                 <span class="fsa-nav-global__text" :id="item.uid+'-SUB'">{{item.label}}</span>
               </button>
@@ -67,7 +67,7 @@ export default {
 
   props: {
     NAV_DATA: Array,
-    CLASS_EXTRA: String,
+    EXTRA_CLASSES: String,
   },
 
   data: function(){
@@ -89,28 +89,25 @@ export default {
     toggleMenu: function(e){
 
       let item = e.currentTarget;
-      let id = item.getAttribute('aria-controls');
       let expanded = item.getAttribute('aria-expanded');
 
       this.loopItems('closeAllMenus');
 
-      if (expanded=="true") {
-        item.setAttribute('aria-expanded', 'false');
-        document.getElementById(id).setAttribute('aria-hidden', 'true');        
-      } else {
-        item.setAttribute('aria-expanded', 'true');
-        document.getElementById(id).setAttribute('aria-hidden', 'false');
-      } 
+      if (expanded=="true") this.closeMenu( item );
+      else this.openMenu( item );
       
+    },
+
+    openMenu: function(item){
+      let id = item.getAttribute('aria-controls');
+      item.setAttribute('aria-expanded', 'true');
+      document.getElementById(id).setAttribute('aria-hidden', 'false');
     },
 
     closeMenu: function(item){
       let id = item.getAttribute('aria-controls');
-      let expanded = item.getAttribute('aria-expanded');
-      if ( expanded ) {
-        item.setAttribute('aria-expanded', 'false');
-        document.getElementById(id).setAttribute('aria-hidden', 'true');
-      }
+      item.setAttribute('aria-expanded', 'false');
+      document.getElementById(id).setAttribute('aria-hidden', 'true');
     },
 
     addFocusListeners: function(item){
@@ -147,12 +144,16 @@ export default {
       for (let i = 0; i < menuItems.length; i++) {
         let item = menuItems[i];
         item.ref = this;
-        if(action=='addFocusListeners') this.addFocusListeners(item);
-        else if(action=='removeFocusListeners') this.removeFocusListeners(item);
-        else if(action=='closeAllMenus') this.closeMenu(item);
-        else if(action=='addUnfocusListener') this.addUnfocusListener(item);
+        this.addActionListener(action, item);
       }
     },
+
+    addActionListener: function( action, item){
+      if(action=='addFocusListeners') this.addFocusListeners(item);
+      else if(action=='removeFocusListeners') this.removeFocusListeners(item);
+      else if(action=='closeAllMenus') this.closeMenu(item);
+      else if(action=='addUnfocusListener') this.addUnfocusListener(item);
+    }
 
   },
 

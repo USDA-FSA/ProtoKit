@@ -1,5 +1,5 @@
 <template>
-  <div :class="'fsa-field '+ERROR_FIELD+' '+ CLASS_EXTRA">
+  <div :class="'fsa-field '+ERROR_FIELD+' '+ EXTRA_CLASSES">
     <label
       class="fsa-field__label"
       :for="ID"
@@ -17,6 +17,7 @@
       :data-behavior="BEHAVIOR"
       :aria-describedby="ARIA_DESCRIBEDBY"
       >
+    <slot name="labelDescribe"></slot>
     <slot v-if="HAS_HELP" name="help"></slot>
     <slot v-if="HAS_MESSAGE" name="message"></slot>
   </div>
@@ -30,7 +31,7 @@ export default {
     INPUT_VALUE: String,
     INPUT_TYPE: String,
     BEHAVIOR: String,
-    CLASS_EXTRA: String,
+    EXTRA_CLASSES: String,
     ERROR_FIELD: String,
     MESSAGE: String,
     HELP: String,
@@ -48,11 +49,5 @@ export default {
     }
   },
 
-  components: {
-    
-  },
-  computed: {
-     
-  }
 }
 </script>

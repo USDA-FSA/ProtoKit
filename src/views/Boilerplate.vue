@@ -6,15 +6,16 @@
       <div class="fsa-section">
         <div class="fsa-section__bd">
           <h1>Boil the Ocean</h1>
+          <p>
+            <button class="fsa-btn fsa-btn--secondary" @click="removeExtentions">Remove .com Extentions</button>
+          </p>
           <ul v-for="user in users">
             <li>
               <p>{{ user.name }} 
                 
                 <fsaLabel
                   TEXT="GREAT"
-                  VARIATION="fsa-label--success"
-                  LARGE="fsa-label--large"
-                  CLASS_EXTRA=""
+                  EXTRA_CLASSES="fsa-label--success fsa-label--large"
                   ATTR_TITLE="Great Person"
                 ></fsaLabel>
 
@@ -37,8 +38,10 @@
 <script>
 import baseHeader from '../partials/baseHeader';
 import baseFooter from '../partials/baseFooter';
-import card from '../components/card/card';
-import label from '../components/label/label';
+//import card from '../components/card/card';
+//import label from '../components/label/label';
+const card = () => import('../components/card/card');
+const label = () => import('../components/label/label');
 
 import { mapState } from 'vuex';
 
@@ -68,8 +71,19 @@ export default {
 
   computed: {
     ...mapState({
-      users: state => state.users.all
+      users: state => {
+        return state.users.all.reverse();
+      }
     })
-  }
+  },
+
+  methods: {
+    
+    removeExtentions(){
+      this.$store.dispatch('users/killExtention');
+    },
+
+  },
+
 }
 </script>

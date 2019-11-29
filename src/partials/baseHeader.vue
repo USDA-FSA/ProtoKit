@@ -17,7 +17,7 @@
       LOGOFF_URL="https://www.eauth.usda.gov/Logout/logoff.asp"
     >
     </headerApp>
-    <globalNav :NAV_DATA="navigationData" CLASS_EXTRA="fsa-nav-global__list-item--multi-column"></globalNav>
+    <globalNav :NAV_DATA="navigationData" EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"></globalNav>
     
 
   </header>
@@ -31,7 +31,6 @@ import tophat from '../components/tophat/tophat';
 import headerApp from '../components/header-app/header-app';
 import globalNav from '../components/global-nav/global-nav';
 
-import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
 
@@ -42,9 +41,9 @@ export default {
   },
 
   computed: {
-    ...mapState({
-      navigationData: state => state.navigation.all
-    })
+    navigationData: function(){
+      return this.$store.getters['navigation/getNavigation'];
+    }
   },
   
 

@@ -1879,7 +1879,6 @@ const apiData = {
 export const service = {
 
   getAllEmployees( callback ){
-    console.log('tick');
     setTimeout( () => callback( apiData ) ,50);
   }
   

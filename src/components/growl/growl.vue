@@ -13,6 +13,9 @@
 </template>
 
 <script>
+
+import utils from "../../_helpers/utils";
+
 export default {
   props: {
     GROWL_ID: String,
@@ -69,7 +72,7 @@ export default {
       growl.setAttribute('aria-hidden', 'false');
 
       // for Center Modal style only
-      if( this.hasClass(growl, 'fsa-growl--centered') ){
+      if( utils.hasClass(growl, 'fsa-growl--centered') ){
 
         let whiteout = document.getElementById('fsa-whiteout');
         whiteout.setAttribute('aria-hidden', 'false');
@@ -93,7 +96,7 @@ export default {
 
 
       } else {
-        growl.addEventListener( this.getAnimationString(growl), this.showGrowlDelay);
+        growl.addEventListener( utils.getAnimationString(growl), this.showGrowlDelay);
       }
 
     },
@@ -102,7 +105,7 @@ export default {
       let growl = e.target;
 
       // clean up
-      growl.removeEventListener( this.getAnimationString( growl ), this.showGrowlDelay);
+      growl.removeEventListener( utils.getAnimationString( growl ), this.showGrowlDelay);
     },
 
     dismissGrowl: function( g ){
@@ -110,9 +113,9 @@ export default {
       let growl = g;
 
       growl.className = growl.className + ' fsa-growl--dismissing';
-      growl.addEventListener( this.getAnimationString( growl ), this.dismissGrowlDelay);
+      growl.addEventListener( utils.getAnimationString( growl ), this.dismissGrowlDelay);
       
-      if( this.hasClass(growl, 'fsa-growl--centered') ){
+      if( utils.hasClass(growl, 'fsa-growl--centered') ){
         let whiteout = document.getElementById('fsa-whiteout');
         whiteout.setAttribute('aria-hidden', 'true');
         whiteout.setAttribute('aria-expanded', 'true');
@@ -133,7 +136,7 @@ export default {
       // set focus back to the originating element
       origin.focus();
       // clean up
-      growl.removeEventListener( this.getAnimationString(growl), this.dismissGrowlDelay);
+      growl.removeEventListener( utils.getAnimationString(growl), this.dismissGrowlDelay);
     },
 
 
@@ -158,11 +161,11 @@ export default {
           
           } else if(identifier == '[data-behavior~="growl-dismiss"]'){
 
-            trigger.ref.dismissGrowl( trigger.ref.getClosest(e.currentTarget, '.fsa-growl') );
+            trigger.ref.dismissGrowl( utils.getClosest(e.currentTarget, '.fsa-growl') );
 
           } else if(identifier == '[data-behavior~="growl-dismiss-delay"]'){
 
-            trigger.ref.dismissGrowlDelay( trigger.ref.getClosest(e.currentTarget, '.fsa-growl') );
+            trigger.ref.dismissGrowlDelay( utils.getClosest(e.currentTarget, '.fsa-growl') );
 
           }
           
@@ -170,50 +173,6 @@ export default {
       }
     },
 
-    getClosest: function(elem, selector){
-
-      // Element.matches() polyfill
-      if (!Element.prototype.matches) {
-        Element.prototype.matches =
-        Element.prototype.matchesSelector ||
-        Element.prototype.mozMatchesSelector ||
-        Element.prototype.msMatchesSelector ||
-        Element.prototype.oMatchesSelector ||
-        Element.prototype.webkitMatchesSelector ||
-        function(s) {
-          var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-          i = matches.length;
-          while (--i >= 0 && matches.item(i) !== this) {}
-            return i > -1;
-        };
-      }
-
-      // Get the closest matching element
-      for ( ; elem && elem !== document; elem = elem.parentNode ) {
-        if ( elem.matches( selector ) ) return elem;
-      }
-
-      return null;
-    },
-
-    getAnimationString: function(el){
-      let str = "";
-      let t;
-      let animations = {
-        'animation':'animationend',
-        'OAnimation':'oAnimationEnd',
-        'MozAnimation':'animationend',
-        'WebkitAnimation':'webkitAnimationEnd'
-      };
-      for (t in animations) {
-        if ( typeof el.style[t] !== 'undefined' ) str = animations[t];
-      }
-      return str;
-    },
-
-    hasClass: function(elem, classname) {
-      return (' ' + elem.className + ' ').indexOf(' ' + classname + ' ') > -1;
-    },
 
   },
 

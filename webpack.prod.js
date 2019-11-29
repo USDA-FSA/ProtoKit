@@ -1,13 +1,14 @@
 //
 //
 //
-const webpack = require('webpack');
+//const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const pixrem = require('pixrem');
 const merge = require('webpack-merge');
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
@@ -20,7 +21,8 @@ module.exports = merge(common, {
 
   output: {
     path: path.resolve('./dist'),
-    filename: '[name].bundle.js'    
+    filename: '[name].bundle.js',
+    publicPath: '/protokit/'    
   },
 
   module: {
@@ -51,10 +53,6 @@ module.exports = merge(common, {
   },
 
   plugins: [
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery'
-    }),
     new CleanWebpackPlugin(['./dist/']),
   ]
 });

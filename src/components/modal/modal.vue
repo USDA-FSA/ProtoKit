@@ -13,6 +13,9 @@
 </template>
 
 <script>
+
+import utils from '../../_helpers/utils';
+
 export default {
   props: {
     MODAL_ID: String,
@@ -131,7 +134,7 @@ export default {
           
           } else if(identifier == '[data-behavior~="close-modal"]'){
 
-            trigger.ref.hideModal( trigger.ref.getClosest(e.currentTarget, '.fsa-modal') );
+            trigger.ref.hideModal( utils.getClosest(e.currentTarget, '.fsa-modal') );
 
           }
           
@@ -139,31 +142,6 @@ export default {
       }
     },
 
-    getClosest: function(elem, selector){
-
-      // Element.matches() polyfill
-      if (!Element.prototype.matches) {
-        Element.prototype.matches =
-        Element.prototype.matchesSelector ||
-        Element.prototype.mozMatchesSelector ||
-        Element.prototype.msMatchesSelector ||
-        Element.prototype.oMatchesSelector ||
-        Element.prototype.webkitMatchesSelector ||
-        function(s) {
-          var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-          i = matches.length;
-          while (--i >= 0 && matches.item(i) !== this) {}
-            return i > -1;
-        };
-      }
-
-      // Get the closest matching element
-      for ( ; elem && elem !== document; elem = elem.parentNode ) {
-        if ( elem.matches( selector ) ) return elem;
-      }
-
-      return null;
-    },
 
   },
 

@@ -6,13 +6,13 @@
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
         <div class="fsa-section__bd">
-          <h1>Who Are You?</h1>
+          <h1>Home Page</h1>
 
           <form @submit.prevent="handleSubmit">
 
             <field
               ID="name"
-              CLASS_EXTRA=""
+              EXTRA_CLASSES=""
               LABEL="Full Name"
               INPUT_VALUE=""
               INPUT_TYPE="text"
@@ -39,7 +39,7 @@
 
             <field
               ID="email"
-              CLASS_EXTRA=""
+              EXTRA_CLASSES=""
               LABEL="E-Mail"
               INPUT_VALUE=""
               INPUT_TYPE="text"
@@ -63,7 +63,7 @@
 
             </field>
 
-            <button class="fsa-btn fsa-btn--secondary" type="submit">Set User</button> 
+            <button class="fsa-btn fsa-btn--secondary" type="submit">Add User</button> 
 
           </form>
         </div>
@@ -81,10 +81,7 @@ import baseFooter from '../partials/baseFooter';
 
 // COMPONENTS
 import field from '../components/field/field';
-import table from '../components/table/table';
-import pagination from '../components/pagination/pagination';
 
-import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
 
@@ -92,48 +89,40 @@ export default {
     baseHeader: baseHeader,
     baseFooter: baseFooter,
     field: field,
-    pkTable: table,
-    pagination: pagination,
   },
-
-  data(){
-    return {
-      itemsPerPage: 8,
-      currentPage: 2,
-      numberSpread: 7
-    }
-  },
-
-
+  
   computed: {
-    ...mapState({
-      navigationData: state => state.navigation.all,
-      users: state => state.users.all,
-      employees: state => state.employees.all,
-    }),
+  
+    navigationData: function(){
+      return this.$store.getters['navigation/getNavigation'];
+    },
 
-    ...mapGetters('users', {
-      fatUsers: 'fatUsers'
-    }),
+    users: function(){
+      return this.$store.getters['users/getUsers'];
+    },
+
+    employees: function(){
+      return this.$store.getters['employees/getEmployees'];
+    },
 
     tableHeadersData: function(){
-      let emp = this.$store.state.employees.all;
+      let emp = this.$store.getters['employees/getEmployees'];
       return emp.headerData;
     },
 
     tableData: function(){
-      let emp = this.$store.state.employees.all;
+      let emp = this.$store.getters['employees/getEmployees'];
       return emp.tableData;
     },
 
     totalItems: function(){
-      let emp = this.$store.state.employees.all;
+      let emp = this.$store.getters['employees/getEmployees'];
       let totalItems = emp.tableData ? emp.tableData.length : 0;
       return totalItems;
     },
 
     totalPages: function(){
-      let emp = this.$store.state.employees.all;
+      let emp = this.$store.getters['employees/getEmployees'];
       let totalItems = emp.tableData ? emp.tableData.length : 0;
       return Math.ceil( totalItems / this.itemsPerPage );
     }
@@ -142,15 +131,23 @@ export default {
 
   methods: {
 
-    ...mapActions('users',{
-      submitForm: 'addNewUser'
-    }),
+    submitForm: function( user ){
+      this.$store.dispatch('users/addNewUser', user);
+    },
+
+    resetForm: function(t){
+      t.name.value = "";
+      t.email.value = "";
+    },
     
     handleSubmit(e){
-      let user = {name: e.target.name.value, email: e.target.email.value};
-      e.target.name.value = "";
-      e.target.email.value = "";
-      this.submitForm( user );
+      this.submitForm(
+        {
+          name: e.target.name.value,
+          email: e.target.email.value
+        }  
+      );
+      this.resetForm(e.target);
     },
 
   },

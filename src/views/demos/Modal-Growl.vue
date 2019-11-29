@@ -21,7 +21,7 @@
         <fieldset>
           <div class="fsa-field">
             <label class="fsa-field__label" for="thingthing-name_887sh">First Name <span class="fsa-field__label-desc">Required</span></label>
-            <input data-behavior="validate-empty-field track-change" class="fsa-input fsa-field__item" id="thingthing-name_887sh" name="thingthing-name_887sh" type="text" value="Stringer">
+            <input data-behavior="validate-empty-field track-change" class="fsa-input fsa-field__item" id="thingthing-name_887sh" name="thingthing-name_887sh" type="text" value="">
             <span class="fsa-field__message" id="thingthing-name__error_887sh-message-01" role="alert">This field is required</span>
           </div>
           <div class="fsa-field fsa-m-t--l">
@@ -63,7 +63,6 @@ import modal from '../../components/modal/modal';
 import growl from '../../components/growl/growl';
 import whiteout from '../../components/whiteout/whiteout';
 
-import { mapState, mapGetters, mapActions } from 'vuex';
 
 export default {
 
@@ -83,9 +82,9 @@ export default {
 
 
   computed: {
-    ...mapState({
-      navigationData: state => state.navigation.all,
-    })  
+    navigationData: function(){
+      return this.$store.getters['navigation/getNavigation'];
+    }
   },
   
 
