@@ -9,6 +9,11 @@
         <div class="fsa-section__bd">
         <h1>Stepped Control</h1>
 
+          <steppedTabs
+            :TABS_DATA="tabsData"
+            EXTRA_CLASSES="fsa-stepped-tabs--justified">
+          </steppedTabs>
+
           <div class="fsa-grid">
             <div class="fsa-grid__1/2">
               <div class="fsa-section__bd">
@@ -39,8 +44,7 @@
             USE_GROWL_ON_SUBMIT="true"
             ON_SUBMIT_GROWL_ID="stepped-control-submit-growl-id"
             CONTINUE_LABEL="Save and Submit"
-            CONTINUE_URL="/demo/modal-growl/"
-          >
+            CONTINUE_URL="/demo/modal-growl/">
           </steppedControl>
 
         </div>
@@ -91,6 +95,7 @@ import baseFooter from '../../partials/baseFooter';
 const growl = () => import('../../components/growl/growl');
 const whiteout = () => import('../../components/whiteout/whiteout');
 const steppedControl = () => import('../../components/stepped-control/stepped-control');
+const steppedTabs = () => import('../../components/stepped-tabs/stepped-tabs');
 const card = () => import('../../components/card/card'); 
 
 export default {
@@ -101,11 +106,54 @@ export default {
     growl: growl,
     whiteout: whiteout,
     steppedControl: steppedControl,
+    steppedTabs: steppedTabs,
     card: card
   },
 
   data(){
     return {
+      tabsData: [
+        {
+          label: 'General Information',
+          url: '#',
+          incompleteTabClass: 'fsa-stepped-tabs__label--complete',
+          activeTabClass: '',
+          completeTabClass: '',
+          isActiveTab: 'false'
+        },
+        {
+          label: 'Coverage',
+          url: '#',
+          incompleteTabClass: '',
+          activeTabClass: 'fsa-stepped-tabs__label--active',
+          completeTabClass: '',
+          isActiveTab: 'step'
+        },
+        {
+          label: 'Producer',
+          url: '#',
+          incompleteTabClass: '',
+          activeTabClass: '',
+          completeTabClass: 'fsa-stepped-tabs__label--incomplete',
+          isActiveTab: 'false'
+        },
+        {
+          label: 'Remittance',
+          url: '#',
+          incompleteTabClass: '',
+          activeTabClass: '',
+          completeTabClass: 'fsa-stepped-tabs__label--incomplete',
+          isActiveTab: 'false'
+        },
+        {
+          label: 'Approval',
+          url: '#',
+          incompleteTabClass: '',
+          activeTabClass: '',
+          completeTabClass: 'fsa-stepped-tabs__label--incomplete',
+          isActiveTab: 'false'
+        }
+      ],
       cardData: [
         {
           label: "Employer",

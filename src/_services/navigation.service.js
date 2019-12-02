@@ -36,9 +36,9 @@ const apiData = [
         hasChild: "false",
       },
       {
-        uid: "stepped-control-id",
-        label: "Stepped Control",
-        path: "/demos/stepped-control",
+        uid: "stepped-demo-id",
+        label: "Stepped Demo",
+        path: "/demos/stepped",
         hasChild: "false",
       },
       {

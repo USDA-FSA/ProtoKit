@@ -9,7 +9,7 @@ const ModalGrowl = () => import('../views/demos/Modal-Growl');
 const Table = () => import('../views/demos/Table');
 const ReportsOverview = () => import('../views/reports/Overview');
 const InvestmentPlacement = () => import('../views/reports/Investment-Placement');
-const SteppedControl = () => import('../views/demos/Stepped-Control');
+const SteppedDemo = () => import('../views/demos/Stepped-Demo');
 
 
 Vue.use( Router );
@@ -41,9 +41,9 @@ export default new Router({
       component: Table
     },
     {
-      path: '/demos/stepped-control',
-      name: 'stepped-control',
-      component: SteppedControl
+      path: '/demos/stepped',
+      name: 'stepped',
+      component: SteppedDemo
     },
     { 
       path: '/reports/overview',
