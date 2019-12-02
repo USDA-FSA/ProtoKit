@@ -42,6 +42,12 @@ const apiData = [
         hasChild: "false",
       },
       {
+        uid: "timeline-id",
+        label: "Timeline",
+        path: "/demos/timeline",
+        hasChild: "false",
+      },
+      {
         uid: "search-demo-id",
         label: "Search wtih RxJS",
         path: "/demos/search",
@@ -76,12 +82,6 @@ const apiData = [
         uid: "technology-plans-id",
         label: "Technology Plans",
         path: "/reports/technology-plans",
-        hasChild: "false",
-      },
-      {
-        uid: "drive-texture-mechanics-id",
-        label: "Drive Texture Mechanics",
-        path: "/reports/drive-texture-mechanics",
         hasChild: "false",
       },
       {

@@ -10,6 +10,7 @@ const Table = () => import('../views/demos/Table');
 const ReportsOverview = () => import('../views/reports/Overview');
 const InvestmentPlacement = () => import('../views/reports/Investment-Placement');
 const SteppedDemo = () => import('../views/demos/Stepped-Demo');
+const Timeline = () => import('../views/demos/Timeline');
 
 
 Vue.use( Router );
@@ -44,6 +45,11 @@ export default new Router({
       path: '/demos/stepped',
       name: 'stepped',
       component: SteppedDemo
+    },
+    {
+      path: '/demos/timeline',
+      name: 'timeline',
+      component: Timeline
     },
     { 
       path: '/reports/overview',
