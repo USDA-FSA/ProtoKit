@@ -92,7 +92,22 @@ export default {
   },
   
   computed: {
-  
+    /*
+
+    The below methods access the store getter functions to create
+    a dynamic (reactive) data structure that is always in sync with
+    the state of the application
+    
+    The naming convention to access the data follows the below:
+    ['moduleName/methodName']
+
+    eg. getters['users/getUsers']
+
+    moduleName: "export const users ... " <--- located in _store/users.modules.js 
+    methodName: ---> "getUsers(state){ ... "
+    
+    */
+
     navigationData: function(){
       return this.$store.getters['navigation/getNavigation'];
     },
@@ -130,6 +145,14 @@ export default {
   
 
   methods: {
+    /*
+    
+    $store.dispatch(...) is how you call a Vuex action within a module.
+
+    In the below instance we are passing in the 'user' object to the addNewUser action of the users module
+    The same naming structure is used here as in the above computed properties.
+    
+    */
 
     submitForm: function( user ){
       this.$store.dispatch('users/addNewUser', user);
@@ -152,7 +175,16 @@ export default {
 
   },
 
-  created(){
+  beforeCreate(){
+    /*
+
+    Using the created Vue 'lifecycle hook', we call the store action to retrieve the data
+    actions are asychronous, which allows them to call external APIs or run complex calculations
+    that could potentially take longer than a single cycle to complete
+    
+    Uses the same naming convention as the computed properties above
+    
+    */
     this.$store.dispatch('users/getUsersApi');
     this.$store.dispatch('employees/getEmployeesApi');
   }

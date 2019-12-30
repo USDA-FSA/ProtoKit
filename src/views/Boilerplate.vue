@@ -43,7 +43,7 @@ import baseFooter from '../partials/baseFooter';
 const card = () => import('../components/card/card');
 const label = () => import('../components/label/label');
 
-import { mapState } from 'vuex';
+//import { mapState } from 'vuex';
 
 export default {
 
@@ -70,15 +70,16 @@ export default {
   },
 
   computed: {
-    ...mapState({
-      users: state => {
-        return state.users.all.reverse();
-      }
-    })
+    users: function() {
+      let u = this.$store.getters['users/getUsers'];
+      return u.reverse(); // reverse() the array to show latest first 
+    }
   },
 
   methods: {
-    
+    /*
+      removeExtentions() is a test Action that will delete ".com" from any email address in the data
+    */
     removeExtentions(){
       this.$store.dispatch('users/killExtention');
     },

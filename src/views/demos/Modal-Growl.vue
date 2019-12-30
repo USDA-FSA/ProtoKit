@@ -85,15 +85,6 @@ export default {
     navigationData: function(){
       return this.$store.getters['navigation/getNavigation'];
     }
-  },
-  
-
-  methods: {
-
-  },
-
-  created(){
-
   }
 }
 </script>

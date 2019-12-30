@@ -18,15 +18,19 @@ const getters = {
   getUsers(state){
     return state.all;
   },
-   
-  fatUsers: state => {
-    let fatUsers = state.all.map( user => {
+  
+  /*
+    getters can augment, but NOT mutation (change) store data
+  */
+  smartUsers: state => {
+    // cycle thru array and return new array with augmentation
+    let sUsers = state.all.map( user => {
       return {
-        name: 'Fat ' + user.name,
+        name: 'smart ' + user.name,
         email: user.email
       }
     });
-    return fatUsers;
+    return sUsers;
   }
 
 };
@@ -34,7 +38,9 @@ const getters = {
 const actions = {
 
   getUsersApi({ commit }){
+    // calls a service and passes in the callback method "commit('SET_ALL_USERS', users)"
     service.getAllUsers( users => {
+      // calls mutation with users data
       commit('SET_ALL_USERS', users);
     });
   },
@@ -52,6 +58,7 @@ const actions = {
 const mutations = {
 
   SET_ALL_USERS( state, users ){
+    // all is a generic array... can be any word, eg "data" or "arr"
     state.all = users;
   },
 
