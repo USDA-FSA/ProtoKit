@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/usda-fsa/protokit.git"
+    "url": "git+https://github.com/USDA-FSA/protokit.git"
   },
   "author": "USDA FSA Enterprise Architecture",
   "contributors": [
