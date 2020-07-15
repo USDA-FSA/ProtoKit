@@ -20,7 +20,7 @@ module.exports = merge(common, {
   devServer: {
     contentBase: path.join(__dirname, "/dist/"),
     watchContentBase: true,
-    publicPath: '/',
+    publicPath: '/protokit/',
     port: 8888,
     inline: true,
     open: true
