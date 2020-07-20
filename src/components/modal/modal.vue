@@ -14,7 +14,7 @@
 
 <script>
 
-import utils from '../../_helpers/utils';
+import utils from '@/_helpers/utils';
 
 export default {
   props: {

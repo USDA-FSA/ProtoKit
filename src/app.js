@@ -2,8 +2,8 @@
 
 import Vue from 'vue';
 import router from './_router/routes';
-import { store } from './_store/store';
-import App from './views/App';
+import store from './_store/store';
+import App from './App';
 
 new Vue({
   el: '#app',

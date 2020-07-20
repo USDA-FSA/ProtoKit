@@ -21,11 +21,11 @@
 
 <script>
 // PARTIALS
-import baseHeader from '../../partials/baseHeader';
-import baseFooter from '../../partials/baseFooter';
+import baseHeader from '@/partials/baseHeader';
+import baseFooter from '@/partials/baseFooter';
 
 // COMPONENTS
-const timeline = () => import('../../components/timeline/timeline');
+const timeline = () => import('@/components/timeline/timeline');
 
 
 export default {

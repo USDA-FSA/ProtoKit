@@ -55,13 +55,13 @@
 
 <script>
 // PARTIALS
-import baseHeader from '../../partials/baseHeader';
-import baseFooter from '../../partials/baseFooter';
+import baseHeader from '@/partials/baseHeader';
+import baseFooter from '@/partials/baseFooter';
 
 // COMPONENTS
-import modal from '../../components/modal/modal';
-import growl from '../../components/growl/growl';
-import whiteout from '../../components/whiteout/whiteout';
+import modal from '@/components/modal/modal';
+import growl from '@/components/growl/growl';
+import whiteout from '@/components/whiteout/whiteout';
 
 
 export default {

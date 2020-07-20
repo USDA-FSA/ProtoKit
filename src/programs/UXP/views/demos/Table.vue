@@ -40,13 +40,13 @@
 
 <script>
 // PARTIALS
-import baseHeader from '../../partials/baseHeader';
-import baseFooter from '../../partials/baseFooter';
+import baseHeader from '@/partials/baseHeader';
+import baseFooter from '@/partials/baseFooter';
 
 // COMPONENTS
 
-import table from '../../components/table/table';
-import pagination from '../../components/pagination/pagination';
+import table from '@/components/table/table';
+import pagination from '@/components/pagination/pagination';
 
 
 export default {

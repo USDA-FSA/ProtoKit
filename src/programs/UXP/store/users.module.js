@@ -1,5 +1,5 @@
 
-import { service } from '../_services/users.service';
+import { service } from '@/_services/users.service';
 
 const utils = {
 

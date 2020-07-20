@@ -5,7 +5,7 @@
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
         <div class="fsa-section__bd">
-          <h1>Investment Placement - Word</h1>
+          <h1>Reports Overview</h1>
           <h4>normal</h4>
           <ul v-for="user in users">
             <li>
@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import baseHeader from '../../partials/baseHeader';
-import baseFooter from '../../partials/baseFooter';
+import baseHeader from '@/partials/baseHeader';
+import baseFooter from '@/partials/baseFooter';
 
 import { mapState, mapGetters, mapActions } from 'vuex';
 

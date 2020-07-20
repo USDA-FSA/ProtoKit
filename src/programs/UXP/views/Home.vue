@@ -76,11 +76,11 @@
 
 <script>
 // PARTIALS
-import baseHeader from '../partials/baseHeader';
-import baseFooter from '../partials/baseFooter';
+import baseHeader from '@/partials/baseHeader';
+import baseFooter from '@/partials/baseFooter';
 
 // COMPONENTS
-import field from '../components/field/field';
+import field from '@/components/field/field';
 
 
 export default {

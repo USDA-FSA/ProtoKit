@@ -88,15 +88,15 @@
 
 <script>
 // PARTIALS
-import baseHeader from '../../partials/baseHeader';
-import baseFooter from '../../partials/baseFooter';
+import baseHeader from '@/partials/baseHeader';
+import baseFooter from '@/partials/baseFooter';
 
 // COMPONENTS
-const growl = () => import('../../components/growl/growl');
-const whiteout = () => import('../../components/whiteout/whiteout');
-const steppedControl = () => import('../../components/stepped-control/stepped-control');
-const steppedTabs = () => import('../../components/stepped-tabs/stepped-tabs');
-const card = () => import('../../components/card/card'); 
+const growl = () => import('@/components/growl/growl');
+const whiteout = () => import('@/components/whiteout/whiteout');
+const steppedControl = () => import('@/components/stepped-control/stepped-control');
+const steppedTabs = () => import('@/components/stepped-tabs/stepped-tabs');
+const card = () => import('@/components/card/card'); 
 
 export default {
 

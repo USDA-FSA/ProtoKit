@@ -1,5 +1,5 @@
 
-import { navigationService } from '../_services/navigation.service';
+import { navigationService } from '@/_services/navigation.service';
 
 const state = {
   all: []

@@ -1,5 +1,5 @@
 
-import { service } from '../_services/employees.service';
+import { service } from '@/_services/employees.service';
 
 const state = {
   all: []

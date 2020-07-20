@@ -10,12 +10,12 @@
 export default {
   props: {
     NAME: String,
-    CARDDATA: Array
+    CARD_DATA: Array
   },
   
   data(){
     return {
-      items: this.CARDDATA
+      items: this.CARD_DATA
     }
   }
 }
