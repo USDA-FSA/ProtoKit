@@ -120,7 +120,7 @@ export default {
   },
 
   beforeCreate(){
-    this.$store.dispatch('employees/getEmployeesApi');
+    //this.$store.dispatch('employees/getEmployeesApi');
   }
 }
 </script>

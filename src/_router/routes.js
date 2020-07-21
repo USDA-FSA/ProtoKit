@@ -7,12 +7,13 @@ import { UXPRoutes } from '../programs/UXP/routes/routes';
 
 Vue.use( Router );
 
-const allRoutes = [ ...UXPRoutes ];
+const baseComponent = () => import('@/programs/UXP/views/Home.vue')
 
-// catch all route
-allRoutes.push({ path: '*', redirect: '/protokit/' })
-
-console.log('allRoutes >',allRoutes)
+const allRoutes = [
+  ...UXPRoutes,
+  { path: '/', component: baseComponent },
+  { path: '*', redirect: '/' },
+];
 
 export default new Router({
   mode: 'history',
