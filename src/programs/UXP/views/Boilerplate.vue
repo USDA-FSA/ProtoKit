@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <baseHeader></baseHeader>
+    <appHeader></appHeader>
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
         <div class="fsa-section__bd">
@@ -31,25 +31,26 @@
         </div>
       </div>
     </main>
-    <baseFooter></baseFooter>
+    <appFooter></appFooter>
   </div>
 </template>
 
 <script>
-import baseHeader from '@/partials/baseHeader';
-import baseFooter from '@/partials/baseFooter';
+// COMPONENTS
+import appHeader from '../components/header/Header.vue';
+import appFooter from '../components/footer/Footer.vue';
 //import card from '../components/card/card';
 //import label from '../components/label/label';
-const card = () => import('@/components/card/card');
-const label = () => import('@/components/label/label');
+const card = () => import('@/components/card/Card.vue');
+const label = () => import('@/components/label/Label.vue');
 
 //import { mapState } from 'vuex';
 
 export default {
 
   components: {
-    baseHeader: baseHeader,
-    baseFooter: baseFooter,
+    appHeader: appHeader,
+    appFooter: appFooter,
     card: card,
     fsaLabel: label,
   },

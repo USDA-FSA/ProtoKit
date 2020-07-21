@@ -1,5 +1,6 @@
 <template>
   <header>
+
     <tophat
       AG_ABBR="USDA"
       AG_FULL="United States Department of Agriculture"
@@ -18,7 +19,6 @@
     >
     </appHeader>
     <globalNav :NAV_DATA="navigationData" EXTRA_CLASSES="fsa-nav-global__list-item--multi-column"></globalNav>
-    
 
   </header>
 </template>

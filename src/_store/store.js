@@ -1,15 +1,14 @@
 
-
 import Vue from 'vue';
 import Vuex from 'vuex';
 
 Vue.use( Vuex );
 
-import { UXPstore } from '../programs/UXP/store';
+import { UXPStore } from '../programs/UXP/store/store'
 
 export default new Vuex.Store({
   modules: {
-    UXPstore
+    UXPStore
   }
 });
 

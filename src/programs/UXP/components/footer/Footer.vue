@@ -3,9 +3,9 @@
 
     <topper></topper>
 
-    <appfooter 
+    <appFooter 
       APP_ABBR_NAME="UXP">
-    </appfooter>
+    </appFooter>
     <screenId
       SCREEN_ID="UXP-123-XYZ">
     </screenId>
@@ -26,7 +26,7 @@ export default {
 
   components: {
     topper: topper,
-    appfooter: appFooter,
+    appFooter: appFooter,
     screenId: screenId,
     hiddenItems: hiddenItems
   }

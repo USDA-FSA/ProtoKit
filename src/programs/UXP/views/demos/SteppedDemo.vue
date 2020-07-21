@@ -2,7 +2,7 @@
 <template>
   <div>
     <whiteout></whiteout>
-    <baseHeader></baseHeader>
+    <appHeader></appHeader>
 
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
@@ -82,27 +82,26 @@
       </template>
     </growl>
 
-    <baseFooter></baseFooter>
+    <appFooter></appFooter>
   </div>
 </template>
 
 <script>
-// PARTIALS
-import baseHeader from '@/partials/baseHeader';
-import baseFooter from '@/partials/baseFooter';
-
 // COMPONENTS
-const growl = () => import('@/components/growl/growl');
-const whiteout = () => import('@/components/whiteout/whiteout');
-const steppedControl = () => import('@/components/stepped-control/stepped-control');
-const steppedTabs = () => import('@/components/stepped-tabs/stepped-tabs');
-const card = () => import('@/components/card/card'); 
+import appHeader from '../../components/header/Header.vue';
+import appFooter from '../../components/footer/Footer.vue';
+
+const growl = () => import('@/components/growl/Growl.vue');
+const whiteout = () => import('@/components/whiteout/Whiteout.vue');
+const steppedControl = () => import('@/components/stepped-control/SteppedControl.vue');
+const steppedTabs = () => import('@/components/stepped-tabs/SteppedTabs.vue');
+const card = () => import('@/components/card/Card.vue'); 
 
 export default {
 
   components: {
-    baseHeader: baseHeader,
-    baseFooter: baseFooter,
+    appHeader: appHeader,
+    appFooter: appFooter,
     growl: growl,
     whiteout: whiteout,
     steppedControl: steppedControl,

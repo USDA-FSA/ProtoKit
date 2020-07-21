@@ -40,6 +40,8 @@ const postCssLoader = {
   }
 };
 
+console.log('>>>>> ',path.resolve(__dirname, 'src'))
+
 module.exports = {
 
   devtool: 'source-map',
@@ -54,7 +56,10 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.vue'],
-    modules: ['node_modules', 'src']
+    modules: ['node_modules', 'src'],
+    alias: {
+      '@': path.resolve(__dirname, 'src')
+    }
   },
 
   externals: {

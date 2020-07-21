@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <baseHeader></baseHeader>
+    <appHeader></appHeader>
 
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
@@ -70,24 +70,23 @@
       </div>
     </main>
 
-    <baseFooter></baseFooter>
+    <appFooter></appFooter>
   </div>
 </template>
 
 <script>
-// PARTIALS
-import baseHeader from '@/partials/baseHeader';
-import baseFooter from '@/partials/baseFooter';
-
 // COMPONENTS
-import field from '@/components/field/field';
+import appHeader from '../components/header/Header.vue';
+import appFooter from '../components/footer/Footer.vue';
+
+import field from '@/components/field/Field.vue';
 
 
 export default {
 
   components: {
-    baseHeader: baseHeader,
-    baseFooter: baseFooter,
+    appHeader: appHeader,
+    appFooter: appFooter,
     field: field,
   },
   

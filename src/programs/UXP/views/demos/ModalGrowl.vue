@@ -2,7 +2,7 @@
 <template>
   <div>
     <whiteout></whiteout>
-    <baseHeader></baseHeader>
+    <appHeader></appHeader>
 
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
@@ -49,26 +49,25 @@
       </template>
     </growl>
 
-    <baseFooter></baseFooter>
+    <appFooter></appFooter>
   </div>
 </template>
 
 <script>
-// PARTIALS
-import baseHeader from '@/partials/baseHeader';
-import baseFooter from '@/partials/baseFooter';
 
 // COMPONENTS
-import modal from '@/components/modal/modal';
-import growl from '@/components/growl/growl';
-import whiteout from '@/components/whiteout/whiteout';
+import appHeader from '../../components/header/Header.vue';
+import appFooter from '../../components/footer/Footer.vue';
+import modal from '@/components/modal/Modal.vue';
+import growl from '@/components/growl/Growl.vue';
+import whiteout from '@/components/whiteout/Whiteout.vue';
 
 
 export default {
 
   components: {
-    baseHeader: baseHeader,
-    baseFooter: baseFooter,
+    appHeader: appHeader,
+    appFooter: appFooter,
     modal: modal,
     growl: growl,
     whiteout: whiteout,

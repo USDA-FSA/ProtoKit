@@ -1,14 +1,14 @@
 
-const Home = () => import('../views/Home');
-const Boilerplate = () => import('../views/Boilerplate');
-const ModalGrowl = () => import('../views/demos/Modal-Growl');
-const Table = () => import('../views/demos/Table');
-const ReportsOverview = () => import('../views/reports/Overview');
-const InvestmentPlacement = () => import('../views/reports/Investment-Placement');
-const SteppedDemo = () => import('../views/demos/Stepped-Demo');
-const Timeline = () => import('../views/demos/Timeline');
+import Home from '../views/Home.vue';
+import Boilerplate from '../views/Boilerplate.vue';
+import ModalGrowl from '../views/demos/ModalGrowl.vue';
+import Table from '../views/demos/Table.vue';
+import ReportsOverview from '../views/reports/Overview.vue';
+import InvestmentPlacement from '../views/reports/InvestmentPlacement.vue';
+import SteppedDemo from '../views/demos/SteppedDemo.vue';
+import Timeline from '../views/demos/Timeline.vue';
 
-const programRoute = 'programs/UXP'
+const programRoute = '/programs/UXP'
 
 export const UXPRoutes = [
   { 
@@ -49,7 +49,7 @@ export const UXPRoutes = [
 
   {
     path: programRoute + '/reports/investment-placement',
-    name: '/reports/investment-placement',
+    name: 'reports-investment-placement',
     component: InvestmentPlacement
   }
 ];

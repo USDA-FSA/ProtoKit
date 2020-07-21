@@ -38,7 +38,6 @@ export default {
   computed: {
     pages: function(){
       let arr = this.createPagesArray(this.CURRENT_PAGE, this.ITEMS_PER_PAGE, this.TOTAL_ITEMS, this.NUMBER_SPREAD);
-      console.log(this.TOTAL_PAGES);
       return arr;
     }
   },
