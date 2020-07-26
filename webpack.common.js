@@ -4,6 +4,8 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLBeautifyPlugin = require('html-beautify-webpack-plugin');
+const BabelPolyfill = require('@babel/polyfill');
+const BabelPluginTransformRegenerator = require("@babel/plugin-transform-regenerator");
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
@@ -40,8 +42,6 @@ const postCssLoader = {
   }
 };
 
-console.log('>>>>> ',path.resolve(__dirname, 'src'))
-
 module.exports = {
 
   devtool: 'source-map',
@@ -50,6 +50,7 @@ module.exports = {
     'main': [
       './src/static/stylesheets/base.scss',
       customizations.fsaStyleJSPath,
+      "babel-polyfill",
       './src/app.js'
     ]
   },

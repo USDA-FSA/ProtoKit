@@ -22,9 +22,12 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.10.5",
+    "@babel/plugin-transform-regenerator": "^7.10.4",
+    "@babel/polyfill": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "autoprefixer": "^8.6.0",
     "babel-loader": "^8.1.0",
+    "babel-polyfill": "^6.26.0",
     "clean-webpack-plugin": "^0.1.19",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
@@ -60,6 +63,8 @@
   },
   "dependencies": {
     "@epegzz/sass-vars-loader": "^4.3.0",
+    "async": "^3.2.0",
+    "axios": "^0.19.2",
     "html-beautify-webpack-plugin": "^1.0.5",
     "pixrem": "^4.0.1",
     "rxjs": "^6.6.0",

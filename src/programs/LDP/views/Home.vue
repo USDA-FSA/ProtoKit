@@ -6,13 +6,9 @@
     <main id="main-content" tabindex="-1">
       <div class="fsa-section">
         <div class="fsa-section__bd">
-          <h1>Home Page</h1>
+          <h1>Agreement Search Results</h1>
           
-          <div v-if="users">
-            <ul :key="index" v-for="(user, index) in users">
-              <li>{{user.name}} - {{ user.email }}</li>
-            </ul>
-          </div>
+
           
         </div>
       </div>
@@ -35,15 +31,7 @@ export default {
   },
   
   computed: {
-    users: function() {
-      let u = this.$store.getters['users/getUsers'];
-      if(u.length > 0){
-        u.reverse();
-      }else{
-        u = null;
-      }
-      return u;
-    }
+
   },
   
 
@@ -52,7 +40,7 @@ export default {
   },
 
   created(){
-    this.$store.dispatch('users/getUsersApi');
+    
   }
 
 }

@@ -1,76 +1,45 @@
 
 import { service } from '@/_services/users.service';
 
-const utils = {
 
-  removeExt: function( ext, str ){
-    return str.split(ext)[0];
-  },
-
-};
-
-const state = {
+const state = () => ({
   all: []
-};
+});
 
 const getters = {
 
-  getUsers(state){
-    return state.all;
-  },
-  
-  /*
-    getters can augment, but NOT mutation (change) store data
-  */
-  smartUsers: state => {
-    // cycle thru array and return new array with augmentation
-    let sUsers = state.all.map( user => {
-      return {
-        name: 'smart ' + user.name,
-        email: user.email
-      }
-    });
-    return sUsers;
-  }
+  getUsers: state => state.all
 
 };
 
 const actions = {
 
-  getUsersApi({ commit }){
-    // calls a service and passes in the callback method "commit('SET_ALL_USERS', users)"
-    service.getAllUsers( users => {
-      // calls mutation with users data
-      commit('SET_ALL_USERS', users);
+  async getUsersApi({ commit }){
+    console.log('getUsersApi')
+
+    return new Promise( (resolve) => {
+      service.getAllUsers( result => {
+        commit('SET_ALL_USERS', result.data);
+        resolve();
+      });
     });
+
   },
 
-  killExtention({ commit }){
-    commit('KILL_EXTENTION');
-  },
-
-  addNewUser({ commit }, user){
-    commit('ADD_NEW_USER', user);
+  addNewUser({ commit }, payload){
+    commit('ADD_NEW_USER', payload);
   }
   
 };
 
 const mutations = {
 
-  SET_ALL_USERS( state, users ){
-    // all is a generic array... can be any word, eg "data" or "arr"
-    state.all = users;
+  SET_ALL_USERS( state, payload ){
+    state.all = payload;
   },
 
-  KILL_EXTENTION( state ){
-    let kx = state.all.forEach( user => {
-      user.email = utils.removeExt('.com', user.email) ;
-    });
-    return kx;
-  },
-
-  ADD_NEW_USER( state, user ){
-    state.all.push( user );
+  ADD_NEW_USER( state, payload ){
+    state.all.push( payload );
   },
 
 };
